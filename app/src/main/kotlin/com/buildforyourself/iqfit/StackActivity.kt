@@ -16,6 +16,7 @@ import android.widget.ListView
 import android.widget.TextView
 import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.model.Food
+import com.buildforyourself.iqfit.util.DbGenerator
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 
@@ -160,7 +161,9 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         val id = item.itemId
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            var generator = DbGenerator()
+            generator.clear();
+            generator.fill();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_charts) {

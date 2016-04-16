@@ -4,9 +4,10 @@ import android.graphics.drawable.Drawable
 import com.buildforyourself.iqfit.data.IQFitDatabase
 import com.raizlabs.android.dbflow.annotation.Column
 import com.raizlabs.android.dbflow.annotation.Table
+import com.raizlabs.android.dbflow.structure.BaseModel
 import java.util.*
 
-@Table(database = IQFitDatabase::class)
+@Table(database = IQFitDatabase::class, name = "IQFitDatabase")
 class User (
         @Column
         val age : Int,
@@ -17,8 +18,8 @@ class User (
         @Column
         val fatPercent: Double,
         @Column
-        var activityType: Formula.ActivityTypos
-)
+        var activityType: Formula.ActivityTypos)
+: BaseModel ()
 
 class Food (
         val id : Int,

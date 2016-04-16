@@ -34,7 +34,7 @@ class DataProvider : IDataProvider {
     }
 
     override fun saveUser(user: User) {
-        //user.save();
+        user.save();
     }
 
     override fun loadUser(): User {
