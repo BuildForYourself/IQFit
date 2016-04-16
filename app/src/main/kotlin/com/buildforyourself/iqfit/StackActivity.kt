@@ -74,7 +74,7 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             val vh: ListRowHolder
             if (convertView == null) {
                 view = this.mInflator.inflate(R.layout.food_layout, parent, false)
-                vh = ListRowHolder(view)
+                vh = ListRowHolder(view, position)
                 view.tag = vh
             } else {
                 view = convertView
@@ -82,19 +82,25 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             }
 
             vh.category_label.text = foods[position].foodCategory.name
-            vh.percent_label.text = foods[position].percent.toString()
+            vh.percent_label.text = foods[position].percent.toString() + "%"
+            vh.color
             //vh.icon.drawable = sList[position].foodCategory.icon
             return view
         }
     }
 
-    private class ListRowHolder(row: View?) {
+    private class ListRowHolder(row: View?, position: Int) {
         val category_label: TextView
         val percent_label: TextView
+        val color: Int
         //val icon: ImageView
         init {
+            var col = android.R.color.background_dark
+
             this.category_label = row?.findViewById(R.id.food_category_name) as TextView
             this.percent_label = row?.findViewById(R.id.percent) as TextView
+            if ((position / 2) == 0) col = android.R.color.background_light
+            this.color = col
             //this.icon = row?.findViewById(R.id.icon) as ImageView
         }
     }
