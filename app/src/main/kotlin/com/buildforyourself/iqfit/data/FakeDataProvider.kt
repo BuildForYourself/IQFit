@@ -7,6 +7,7 @@ import com.buildforyourself.iqfit.model.*
 import java.util.*
 
 class FakeDataProvider : IDataProvider {
+
     override fun saveFoodCategory(foodCategory: FoodCategory) {
         throw UnsupportedOperationException()
     }
@@ -34,6 +35,10 @@ class FakeDataProvider : IDataProvider {
         )
 
         return food;
+    }
+
+    override fun saveDefaultComponents(foodCategory: FoodCategory) {
+
     }
 
     override fun loadFoodCategories() : List<FoodCategory> {

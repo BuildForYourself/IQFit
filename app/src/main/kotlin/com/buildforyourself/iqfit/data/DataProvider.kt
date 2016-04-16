@@ -36,4 +36,8 @@ class DataProvider : IDataProvider {
     override fun loadUser(): User {
         throw Exception()
     }
+
+    override fun saveDefaultComponents(foodCategory: FoodCategory) {
+
+    }
 }

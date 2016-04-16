@@ -3,20 +3,25 @@ package com.buildforyourself.iqfit
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
 import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.data.IDataProvider
+import com.buildforyourself.iqfit.model.FoodCategory
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 
 class FoodComponentsActivity  : AppCompatActivity() {
     var dataProvider: IDataProvider = FakeDataProvider()
+    private var currentCategory: FoodCategory? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val categoryId = intent.extras.getInt("categoryId")
         val category = dataProvider.loadFoodCategories().find { it.id == categoryId } ?: return
+
+        currentCategory = category
 
         verticalLayout() {
             setSupportActionBar(toolbar() {
@@ -62,5 +67,16 @@ class FoodComponentsActivity  : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.component, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        val c = currentCategory
+        if (id == R.id.action_settings && c != null) {
+            dataProvider.saveDefaultComponents(c)
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
