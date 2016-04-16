@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.neenbedankt.android-apt'
+
+def dbflow_version = "3.0.0-beta5"
 
 android {
     compileSdkVersion 23
@@ -43,7 +46,23 @@ dependencies {
 
     //Chart
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
+    // DBFlow
+    apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+
+    // kapt for kotlin apt
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+    // Kotlin extensions
+    //compile "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflow_version}"
 }
+
+// if you're building with Kotlin
+kapt {
+    generateStubs = true
+}
+
 buildscript {
     ext.kotlin_version = '1.0.1-2'
     repositories {
