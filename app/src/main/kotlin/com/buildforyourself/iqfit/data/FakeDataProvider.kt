@@ -7,6 +7,18 @@ import com.buildforyourself.iqfit.model.*
 import java.util.*
 
 class FakeDataProvider : IDataProvider {
+    override fun saveFoodCategory(foodCategory: FoodCategory) {
+        throw UnsupportedOperationException()
+    }
+
+    override fun loadUser(): User {
+        throw UnsupportedOperationException()
+    }
+
+    override fun saveUser(user: User) {
+        throw UnsupportedOperationException()
+    }
+
     override fun loadFood(): List<Food> {
 
         val foodCategories = loadFoodCategories();

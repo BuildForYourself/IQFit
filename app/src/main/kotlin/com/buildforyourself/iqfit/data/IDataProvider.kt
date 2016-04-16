@@ -1,7 +1,6 @@
 package com.buildforyourself.iqfit.data
 
-import com.buildforyourself.iqfit.model.Food
-import com.buildforyourself.iqfit.model.FoodCategory
+import com.buildforyourself.iqfit.model.*
 
 /**
  * Created by Ilya on 16.04.2016.
@@ -9,5 +8,10 @@ import com.buildforyourself.iqfit.model.FoodCategory
 
 interface IDataProvider {
     fun loadFoodCategories() : List<FoodCategory>
+    fun saveFoodCategory(foodCategory: FoodCategory)
+
     fun loadFood() : List<Food>
+
+    fun loadUser() : User
+    fun saveUser(user : User)
 }

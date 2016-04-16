@@ -3,6 +3,10 @@ package com.buildforyourself.iqfit.model
 import android.graphics.drawable.Drawable
 import java.util.*
 
+class User (
+        val age : Int,
+        val height : Int)
+
 class Food (
         val id : Int,
         val foodCategory: FoodCategory,
