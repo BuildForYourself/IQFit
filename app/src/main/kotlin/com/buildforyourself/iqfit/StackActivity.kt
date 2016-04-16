@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import org.jetbrains.anko.find
-import org.jetbrains.anko.*
+import org.jetbrains.anko.startActivity
 
 class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,6 +34,20 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
         val navigationView = find<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+
+        createFoodItems()
+    }
+
+    fun createFoodItems()
+    {
+       /* val scrollView = find<NestedScrollView>(R.id.scroll_stack_view)
+        val dataProvider = FakeDataProvider()
+
+        val foods = dataProvider.loadFood()
+        scrollView.view{
+            scrollView.addView(verticalLayout() { button() })
+        }
+        */
     }
 
     override fun onBackPressed() {

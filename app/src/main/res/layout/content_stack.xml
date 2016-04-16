@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.buildforyourself.iqfit.StackActivity"
-    tools:showIn="@layout/app_bar_stack">
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/stack_grid">
-
-        </GridLayout>
+    tools:showIn="@layout/app_bar_stack"
+    android:id="@+id/scroll_stack_view">
 
 </android.support.v4.widget.NestedScrollView>

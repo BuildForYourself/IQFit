@@ -1,5 +1,6 @@
 package com.buildforyourself.iqfit.data
 
+import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
 
 /**
@@ -8,4 +9,5 @@ import com.buildforyourself.iqfit.model.FoodCategory
 
 interface IDataProvider {
     fun loadFoodCategories() : List<FoodCategory>
+    fun loadFood() : List<Food>
 }
