@@ -43,6 +43,8 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
         val lv = findViewById(R.id.list_view) as ListView
         lv.adapter = ListExampleAdapter(this)
+
+
     }
 
     private class ListExampleAdapter(context: Context) : BaseAdapter() {
