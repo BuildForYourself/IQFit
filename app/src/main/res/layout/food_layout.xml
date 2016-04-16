@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight">
+    <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_column="0"
+        android:layout_gravity="center|left"
+        android:src="@drawable/ic_menu_send"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center|left"
+        android:id="@+id/food_category_name"
+        android:layout_height="20pt"
+        android:textSize="14pt"
+        android:text="Супчик"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:textAlignment="textEnd"
+        android:layout_gravity="center|right"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/percent"
+        android:textSize="12pt"
+        android:text="146%"
+        android:layout_marginRight="10dp" />
+</GridLayout>
