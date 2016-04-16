@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import org.jetbrains.anko.find
 
 class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -21,21 +22,21 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         val toolbar = findViewById(R.id.toolbar) as Toolbar?
         setSupportActionBar(toolbar)
 
-        val fab = findViewById(R.id.fab) as FloatingActionButton?
-        fab.setOnClickListener(View.OnClickListener { view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show() })
+        val fab = find<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener({ view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show() })
 
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout?
+        val drawer = find<DrawerLayout>(R.id.drawer_layout)
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.setDrawerListener(toggle)
         toggle.syncState()
 
-        val navigationView = findViewById(R.id.nav_view) as NavigationView?
+        val navigationView = find<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
     }
 
     override fun onBackPressed() {
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout?
+        val drawer = find<DrawerLayout>(R.id.drawer_layout)
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
         } else {
@@ -82,7 +83,7 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
         }
 
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout?
+        val drawer = find<DrawerLayout>(R.id.drawer_layout)
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
