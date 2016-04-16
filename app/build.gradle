@@ -32,16 +32,21 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
-    // Kotlin
+    //Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    // Anko
+    //Anko
     compile 'org.jetbrains.anko:anko-sdk15:0.8.3'
     // sdk19, sdk21, sdk23 are also available
     compile 'org.jetbrains.anko:anko-support-v4:0.8.3'
     // In case you need support-v4 bindings
     compile 'org.jetbrains.anko:anko-appcompat-v7:0.8.3'
+
     // Sugar ORM
     compile 'com.github.satyan:sugar:1.4'
+    
+    
+    //Chart
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }
 buildscript {
     ext.kotlin_version = '1.0.1-2'

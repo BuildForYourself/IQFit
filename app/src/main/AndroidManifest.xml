@@ -24,6 +24,10 @@
         <activity android:name=".FoodComponentsActivity"
             android:label="Food Components"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ChartTabActivity"
+            android:label="@string/title_activity_chart_tab"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
