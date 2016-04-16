@@ -1,5 +1,6 @@
 package com.buildforyourself.iqfit
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -24,7 +25,7 @@ class FoodComponentsActivity() : AppCompatActivity() {
 
         verticalLayout() {
             setSupportActionBar(toolbar() {
-                backgroundColor = R.color.colorPrimary
+                backgroundColor = Color.parseColor(getString(R.color.colorPrimary))
                 title = getString(R.string.food_components_title)
             })
             scrollView() {

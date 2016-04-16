@@ -1,5 +1,6 @@
 package com.buildforyourself.iqfit
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
@@ -19,7 +20,7 @@ class FoodCategoriesActivity() : AppCompatActivity() {
 
         verticalLayout() {
             toolbar() {
-                backgroundColor = R.color.colorPrimary
+                backgroundColor = Color.parseColor(getString(R.color.colorPrimary))
                 title = getString(R.string.food_category_title)
             }
 
