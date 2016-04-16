@@ -199,10 +199,14 @@ class ChartTabActivity : AppCompatActivity() {
                 values = ArrayList<SubcolumnValue>()
 
                     if (anInt == 1) {
-                        values.add(SubcolumnValue((items.sumBy { it.calories }/items.count()).toFloat(), ChartUtils.COLOR_GREEN));
+                        var count = items.count();
+                        if (count != 0)
+                            values.add(SubcolumnValue((items.sumBy { it.calories }/count).toFloat(), ChartUtils.COLOR_GREEN));
                     } else {
                         val filtered = items.filter { it.dateTime.month == i };
-                        values.add(SubcolumnValue((filtered.sumBy { it.calories }/filtered.count()).toFloat(), ChartUtils.COLOR_GREEN));
+                        val count = filtered.count()
+                        if (count != 0)
+                            values.add(SubcolumnValue((filtered.sumBy { it.calories }/count).toFloat(), ChartUtils.COLOR_GREEN));
                     }
 
                 val column = Column(values)
