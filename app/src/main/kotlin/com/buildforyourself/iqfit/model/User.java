@@ -29,4 +29,18 @@ public class User extends BaseModel {
 
     @Column
     public ActivityTypos activityType;
+
+    public User() {
+        super();
+    }
+
+    public User(int age, int height, double weight, double fatPercent, ActivityTypos activityType) {
+        super();
+        this.id = 0;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.fatPercent = fatPercent;
+        this.activityType = activityType;
+    }
 }

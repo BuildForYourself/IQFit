@@ -1,12 +1,6 @@
 package com.buildforyourself.iqfit.model
 
 import android.graphics.drawable.Drawable
-import com.buildforyourself.iqfit.calc.Formula
-import com.raizlabs.android.dbflow.annotation.Column
-import com.raizlabs.android.dbflow.annotation.PrimaryKey
-import com.raizlabs.android.dbflow.annotation.Table
-import com.raizlabs.android.dbflow.sql.language.Select
-import com.raizlabs.android.dbflow.structure.BaseModel
 import java.util.*
 
 class Food (
