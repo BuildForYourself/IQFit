@@ -17,6 +17,7 @@ class FoodCategoriesActivity : AppCompatActivity() {
         val categories = dataProvider.loadFoodCategories()
 
         verticalLayout(){
+            /*
             setSupportActionBar(toolbar {
                 backgroundColor = R.attr.colorPrimary
                 popupTheme = R.style.AppTheme_PopupOverlay
@@ -24,7 +25,7 @@ class FoodCategoriesActivity : AppCompatActivity() {
                 width=matchParent
                 height= R.attr.actionBarSize
             })
-
+            */
             scrollView() {
                 verticalLayout() {
                     var i: Int = 0
@@ -36,14 +37,14 @@ class FoodCategoriesActivity : AppCompatActivity() {
                                 if (i == categories.count())
                                     break
 
-                                val c = categories[i]
+                                val category = categories[i]
                                 button() {
-                                    setCompoundDrawablesWithIntrinsicBounds(null, c.icon, null, null)
-                                    text = c.name
+                                    setCompoundDrawablesWithIntrinsicBounds(null, category.icon, null, null)
+                                    text = category.name
                                     textSize = 14f
                                     onClick {
-                                        if (c.components != null && c.components.count() > 0)
-                                            startActivity<FoodComponentsActivity>("categoryId" to 0)
+                                        if (category.components != null && category.components.count() > 0)
+                                            startActivity<FoodComponentsActivity>("categoryId" to category.id)
                                     }
                                     onLongClick {
                                         toast("Значение по умолчанию добавлено")

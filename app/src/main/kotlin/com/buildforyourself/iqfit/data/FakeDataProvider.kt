@@ -6,10 +6,6 @@ import android.graphics.drawable.Icon
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.model.FoodComponent
 
-/**
- * Created by Ilya on 16.04.2016.
- */
-
 class FakeDataProvider : IDataProvider {
     override fun loadFoodCategories() : List<FoodCategory> {
 //        var foodCategories: MutableList<FoodCategory> = mutableListOf<FoodCategory>()
@@ -19,15 +15,21 @@ class FakeDataProvider : IDataProvider {
 //        }
 
         var foodCategories = listOf (
-                FoodCategory ("Супы", BitmapDrawable(), 1,  true, listOf<FoodComponent>()),
-                FoodCategory ("Салаты", BitmapDrawable(), 2,  true, listOf<FoodComponent>()),
-                FoodCategory ("Сладости", BitmapDrawable(), 3,  true, listOf<FoodComponent>()),
-                FoodCategory ("Напитки", BitmapDrawable(), 4,  true, listOf<FoodComponent>()),
-                FoodCategory ("Фрукты", BitmapDrawable(), 5,  true, listOf<FoodComponent>()),
-                FoodCategory ("Мясо", BitmapDrawable(), 6,  true, listOf<FoodComponent>()),
-                FoodCategory ("Сыры", BitmapDrawable(), 7,  true, listOf<FoodComponent>())
+                FoodCategory (1, "Супы", BitmapDrawable(), 1,  true, getSoupComponents()),
+                FoodCategory (2, "Салаты", BitmapDrawable(), 2,  true, listOf<FoodComponent>()),
+                FoodCategory (3, "Сладости", BitmapDrawable(), 3,  true, listOf<FoodComponent>()),
+                FoodCategory (4, "Напитки", BitmapDrawable(), 4,  true, listOf<FoodComponent>()),
+                FoodCategory (5, "Фрукты", BitmapDrawable(), 5,  true, listOf<FoodComponent>()),
+                FoodCategory (6, "Мясо", BitmapDrawable(), 6,  true, listOf<FoodComponent>()),
+                FoodCategory (7, "Сыры", BitmapDrawable(), 7,  true, listOf<FoodComponent>())
         )
 
         return foodCategories;
+    }
+
+    private fun getSoupComponents() : List<FoodComponent>{
+        return listOf(
+                FoodComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true)
+        )
     }
 }
