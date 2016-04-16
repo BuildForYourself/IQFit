@@ -17,8 +17,9 @@ class FoodCategoriesActivity() : AppCompatActivity() {
 
         val categories = dataProvider.loadFoodCategories()
 
-        verticalLayout(){
-            toolbar(){
+        verticalLayout() {
+            toolbar() {
+                backgroundColor = R.color.colorPrimary
                 title = getString(R.string.food_category_title)
             }
 

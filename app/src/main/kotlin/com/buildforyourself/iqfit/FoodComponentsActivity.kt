@@ -10,7 +10,7 @@ import com.buildforyourself.iqfit.model.FoodCategory
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 
-class FoodComponentsActivity()  : AppCompatActivity() {
+class FoodComponentsActivity() : AppCompatActivity() {
     val dataProvider = DataProviderFactory.instance.dataProvider
     private var currentCategory: FoodCategory? = null
 
@@ -24,6 +24,7 @@ class FoodComponentsActivity()  : AppCompatActivity() {
 
         verticalLayout() {
             setSupportActionBar(toolbar() {
+                backgroundColor = R.color.colorPrimary
                 title = getString(R.string.food_components_title)
             })
             scrollView() {
@@ -46,7 +47,7 @@ class FoodComponentsActivity()  : AppCompatActivity() {
                                     isChecked = component.isDefault
                                     onClick {
                                         component.isSelected = !component.isSelected
-                                        if(component.isSingle)
+                                        if (component.isSingle)
                                             category.selectSingleComponent(component)
                                     }
                                 }.lparams {
