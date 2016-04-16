@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.buildforyourself.iqfit.ChartTabActivity">
+    tools:context="com.buildforyourself.iqfit.ChartTabActivity"
+    >
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -19,9 +20,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            >
 
         </android.support.v7.widget.Toolbar>
 

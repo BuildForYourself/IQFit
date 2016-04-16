@@ -18,7 +18,9 @@ import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.util.DbGenerator
 import org.jetbrains.anko.find
+import org.jetbrains.anko.onItemClick
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,27 +45,33 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         navigationView.setNavigationItemSelectedListener(this)
 
         val lv = findViewById(R.id.list_view) as ListView
-        lv.adapter = ListExampleAdapter(this)
 
+        lv.adapter = ListExampleAdapter(this, FakeDataProvider().loadFood())
 
+        lv.onItemClick { adapterView, view, i, l ->
+            val lea = lv.adapter as ListExampleAdapter
+            val food = lea.getItem(i) as Food
+            toast("Количество калорий ${food.calories}")
+        }
     }
 
-    private class ListExampleAdapter(context: Context) : BaseAdapter() {
-        internal var foods: List<Food>
+    private class ListExampleAdapter(context: Context, foods: List<Food>) : BaseAdapter() {
+        var _foods: List<Food>
         private val mInflator: LayoutInflater
 
         init {
-            val dataProvider = FakeDataProvider()
-            foods = dataProvider.loadFood();
+            _foods = foods;
+            _foods = foods.sortedByDescending { r -> r.id } //Debug for fake provider
+            //foods = foods.sortedByDescending { r -> r.dateTime }
             this.mInflator = LayoutInflater.from(context)
         }
 
         override fun getCount(): Int {
-            return foods.size
+            return _foods.size
         }
 
         override fun getItem(position: Int): Any {
-            return foods[position]
+            return _foods[position]
         }
 
         override fun getItemId(position: Int): Long {
@@ -75,33 +83,31 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             val vh: ListRowHolder
             if (convertView == null) {
                 view = this.mInflator.inflate(R.layout.food_layout, parent, false)
-                vh = ListRowHolder(view, position)
+                vh = ListRowHolder(view, _foods[position])
                 view.tag = vh
             } else {
                 view = convertView
                 vh = view.tag as ListRowHolder
             }
 
-            vh.category_label.text = foods[position].foodCategory.name
-            vh.percent_label.text = foods[position].percent.toString() + "%"
-            vh.color
+            vh.category_label.text = _foods[position].foodCategory.name
+            vh.percent_label.text = _foods[position].percent.toString() + "%"
+            //var t = Drawable.createFromPath("@color/design_fab_stroke_end_inner_color")
+
             //vh.icon.drawable = sList[position].foodCategory.icon
             return view
         }
     }
 
-    private class ListRowHolder(row: View?, position: Int) {
-        val category_label: TextView
+    private class ListRowHolder(row: View?, food: Food) {
+        var category_label: TextView
         val percent_label: TextView
-        val color: Int
+        val food: Food
         //val icon: ImageView
         init {
-            var col = android.R.color.background_dark
-
             this.category_label = row?.findViewById(R.id.food_category_name) as TextView
             this.percent_label = row?.findViewById(R.id.percent) as TextView
-            if ((position / 2) == 0) col = android.R.color.background_light
-            this.color = col
+            this.food = food
             //this.icon = row?.findViewById(R.id.icon) as ImageView
         }
     }

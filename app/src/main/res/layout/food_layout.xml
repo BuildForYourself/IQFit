@@ -6,7 +6,7 @@
     android:alignmentMode="alignBounds"
     android:useDefaultMargins="true"
     android:id="@+id/grid"
-    android:background="#cccccc">
+    android:background="@color/design_fab_stroke_end_inner_color">
     <ImageView
         android:id="@+id/icon"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -32,5 +32,6 @@
         android:id="@+id/percent"
         android:textSize="10pt"
         android:text="146%"
-        android:layout_width="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp" />
 </GridLayout>

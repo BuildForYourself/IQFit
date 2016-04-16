@@ -1,8 +1,6 @@
 package com.buildforyourself.iqfit.data
 
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.Icon
 import com.buildforyourself.iqfit.model.*
 import java.util.*
 
@@ -32,13 +30,20 @@ class FakeDataProvider : IDataProvider {
         val foodCategories = loadFoodCategories();
 
         var food = listOf (
-                Food (1, foodCategories[0], listOf(), Date(), 10, 15),
-                Food (2, foodCategories[1], listOf(), Date(), 10, 15),
-                Food (3, foodCategories[2], listOf(), Date(), 10, 15),
-                Food (4, foodCategories[3], listOf(), Date(), 10, 15),
-                Food (5, foodCategories[4], listOf(), Date(), 10, 15),
-                Food (6, foodCategories[5], listOf(), Date(), 10, 15),
-                Food (7, foodCategories[6], listOf(), Date(), 10, 15)
+                Food (1, foodCategories[0], listOf(), Date(), 10, 1),
+                Food (2, foodCategories[1], listOf(), Date(), 10, 2),
+                Food (3, foodCategories[2], listOf(), Date(), 10, 3),
+                Food (4, foodCategories[3], listOf(), Date(), 10, 4),
+                Food (5, foodCategories[4], listOf(), Date(), 10, 5),
+                Food (6, foodCategories[5], listOf(), Date(), 10, 6),
+                Food (7, foodCategories[6], listOf(), Date(), 10, 7),
+                Food (8, foodCategories[0], listOf(), Date(), 10, 8),
+                Food (9, foodCategories[1], listOf(), Date(), 10, 9),
+                Food (10, foodCategories[2], listOf(), Date(), 10, 10),
+                Food (11, foodCategories[3], listOf(), Date(), 10, 11),
+                Food (12, foodCategories[4], listOf(), Date(), 10, 12),
+                Food (13, foodCategories[5], listOf(), Date(), 10, 13),
+                Food (14, foodCategories[6], listOf(), Date(), 10, 14)
         )
 
         return food;
