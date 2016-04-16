@@ -17,15 +17,13 @@ class FoodCategoriesActivity : AppCompatActivity() {
         val categories = dataProvider.loadFoodCategories()
 
         verticalLayout(){
-            /*
-            setSupportActionBar(toolbar {
-                backgroundColor = R.attr.colorPrimary
-                popupTheme = R.style.AppTheme_PopupOverlay
+            toolbar(){
+                title = getString(R.string.food_category_title)
             }.lparams {
-                width=matchParent
-                height= R.attr.actionBarSize
-            })
-            */
+                width = matchParent
+                height = R.attr.actionBarSize
+            }
+
             scrollView() {
                 verticalLayout() {
                     var i: Int = 0

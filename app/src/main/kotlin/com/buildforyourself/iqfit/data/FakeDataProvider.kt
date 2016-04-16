@@ -1,9 +1,9 @@
 package com.buildforyourself.iqfit.data
 
 import android.graphics.drawable.BitmapDrawable
-import com.buildforyourself.iqfit.model.Food
-import com.buildforyourself.iqfit.model.FoodCategory
-import com.buildforyourself.iqfit.model.FoodComponent
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.Icon
+import com.buildforyourself.iqfit.model.*
 import java.util.*
 
 class FakeDataProvider : IDataProvider {
@@ -46,7 +46,20 @@ class FakeDataProvider : IDataProvider {
 
     private fun getSoupComponents() : List<FoodComponent>{
         return listOf(
-                FoodComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true)
+                CalorieComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true, calories = 80),
+                CalorieComponent(2, "Картофель", BitmapDrawable(), "", calories = 20),
+                CalorieComponent(3, "Горох, фасоль", BitmapDrawable(), "", calories = 20),
+                CalorieComponent(4, "Крем, сыр", BitmapDrawable(), "", calories = 20),
+                CalorieComponent(5, "Макароны, клецки", BitmapDrawable(), "", calories = 40),
+                CalorieComponent(6, "Мясо, рыба", BitmapDrawable(), "", calories = 50),
+                CalorieComponent(7, "Жирный бульон", BitmapDrawable(), "", calories = 60),
+                CalorieComponent(8, "Зажарка, сало", BitmapDrawable(), "", calories = 100),
+                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 35),
+                CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85),
+                CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80),
+                CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120),
+                QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
         )
     }
 }

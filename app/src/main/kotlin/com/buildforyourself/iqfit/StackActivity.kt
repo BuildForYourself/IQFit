@@ -24,7 +24,7 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stack)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar?
+        val toolbar = find<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val fab = find<FloatingActionButton>(R.id.fab)

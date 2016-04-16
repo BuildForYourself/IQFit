@@ -36,11 +36,11 @@ class CalorieComponent (
         name: String,
         icon: Drawable,
         group: String,
-        isSingle: Boolean,
-        isDefault: Boolean,
-        isSelected: Boolean,
+        isSingle: Boolean = false,
+        isDefault: Boolean = false,
+        isSelected: Boolean = false,
         val calories: Int,
-        val operation: Operation)
+        val operation: Operation = Operation.Sum)
 : FoodComponent(id, name, icon, group, isSingle, isDefault, isSelected) {
 }
 
@@ -49,9 +49,9 @@ class QuantityComponent (
         name: String,
         icon: Drawable,
         group: String,
-        isSingle: Boolean,
-        isDefault: Boolean,
-        isSelected: Boolean,
+        isSingle: Boolean = false,
+        isDefault: Boolean = false,
+        isSelected: Boolean = false,
         val multiplier: Double)
 : FoodComponent(id, name, icon, group, isSingle, isDefault, isSelected) {
 }
