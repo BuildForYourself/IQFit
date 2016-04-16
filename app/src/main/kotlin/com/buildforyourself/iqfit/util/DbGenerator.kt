@@ -1,9 +1,13 @@
 package com.buildforyourself.iqfit.util
 
-import Formula
+import android.graphics.drawable.BitmapDrawable
+import com.buildforyourself.iqfit.calc.Formula
 import com.buildforyourself.iqfit.data.DataProvider
-import com.buildforyourself.iqfit.model.SuperProduct
+import com.buildforyourself.iqfit.model.FoodCategory
+import com.buildforyourself.iqfit.model.FoodComponent
 import com.buildforyourself.iqfit.model.User
+import com.raizlabs.android.dbflow.sql.language.Select
+import org.jetbrains.anko.*
 
 /**
  * Created by Ilya on 16.04.2016.
@@ -12,15 +16,20 @@ import com.buildforyourself.iqfit.model.User
 class DbGenerator {
     fun fill() {
         val dataProvider = DataProvider()
-//        val foodCategory = FoodCategory (1, "Супы", BitmapDrawable(), 1, true,
-//                listOf(FoodComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true)))
-//        dataProvider.saveFoodCategory(foodCategory);
-//        var user = User(33, 180, 1.0, 2.0, Formula.ActivityTypos.ATHLETE)
-//        dataProvider.saveUser(user)
-        var superProduct = SuperProduct()
-        superProduct.name = "Test"
-        superProduct.randomNumber = 777
-        superProduct.save()
+        var user = User()
+        user.age = 50
+        user.height = 180
+        user.weight = 80.5
+        user.fatPercent = 30.0
+        user.activityType = Formula.ActivityTypos.HULK
+        dataProvider.saveUser(user)
+
+        user = dataProvider.loadUser()
+        if (user.age > 5)
+            user.age = 55;
+
+//        var superProducts = Select().from<SuperProduct>(SuperProduct::class.java).queryList()
+
     }
 
     fun clear() {

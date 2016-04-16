@@ -1,3 +1,5 @@
+package com.buildforyourself.iqfit.calc
+
 class FatProcentFormula(
         override var weight: Double,
         override var activityType: Formula.ActivityTypos,

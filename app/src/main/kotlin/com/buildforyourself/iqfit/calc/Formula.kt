@@ -1,3 +1,5 @@
+package com.buildforyourself.iqfit.calc
+
 abstract class Formula(
         open var weight: Double,
         open var activityType: Formula.ActivityTypos

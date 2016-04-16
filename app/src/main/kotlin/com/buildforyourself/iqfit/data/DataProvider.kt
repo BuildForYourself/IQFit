@@ -5,6 +5,7 @@ import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.model.FoodComponent
 import com.buildforyourself.iqfit.model.User
+import com.raizlabs.android.dbflow.sql.language.Select
 
 /**
  * Created by Ilya on 16.04.2016.
@@ -38,7 +39,8 @@ class DataProvider : IDataProvider {
     }
 
     override fun loadUser(): User {
-        throw Exception()
+        var user = Select().from<User>(User::class.java).querySingle()
+        return user
     }
 
     override fun saveDefaultComponents(foodCategory: FoodCategory) {

@@ -1,3 +1,5 @@
+package com.buildforyourself.iqfit.calc
+
 class WeightFormula(
         override var weight: Double,
         override var activityType: Formula.ActivityTypos
