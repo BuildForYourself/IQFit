@@ -12,6 +12,15 @@ import com.raizlabs.android.dbflow.sql.language.Select
  */
 
 class DataProvider : IDataProvider {
+    override fun saveUser(user: User) {
+        user.save();
+    }
+
+    override fun loadUser(): User {
+        var user = Select().from<User>(User::class.java).querySingle()
+        return user
+    }
+
     override fun loadFood(): List<Food> {
         throw UnsupportedOperationException()
     }
@@ -32,15 +41,6 @@ class DataProvider : IDataProvider {
         return listOf(
                 FoodComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true)
         )
-    }
-
-    override fun saveUser(user: User) {
-        user.save();
-    }
-
-    override fun loadUser(): User {
-        var user = Select().from<User>(User::class.java).querySingle()
-        return user
     }
 
     override fun saveDefaultComponents(foodCategory: FoodCategory) {

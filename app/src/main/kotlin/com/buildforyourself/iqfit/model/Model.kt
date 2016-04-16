@@ -9,24 +9,6 @@ import com.raizlabs.android.dbflow.sql.language.Select
 import com.raizlabs.android.dbflow.structure.BaseModel
 import java.util.*
 
-@Table(tableName = "User", databaseName = "db", allFields = true)
-class User1 (
-        @Column
-        @PrimaryKey
-        var id : Int,
-        @Column
-        val age : Int,
-        @Column
-        val height : Int,
-        @Column
-        val weight: Double,
-        @Column
-        val fatPercent: Double,
-        @Column
-        var activityType: Formula.ActivityTypos)
-: BaseModel () {
-}
-
 class Food (
         val id : Int,
         val foodCategory: FoodCategory,
