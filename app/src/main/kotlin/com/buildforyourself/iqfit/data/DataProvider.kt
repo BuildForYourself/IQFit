@@ -16,8 +16,6 @@ class DataProvider : IDataProvider {
     }
 
     override fun loadFoodCategories(): List<FoodCategory> {
-//        var foodCategories = SugarRecord.listAll(FoodCategory::class.java)
-//        return foodCategories
         throw Exception()
     }
 
@@ -36,8 +34,6 @@ class DataProvider : IDataProvider {
     }
 
     override fun loadUser(): User {
-//        var user = SugarRecord.first(User::class.java)
-//        return user;
         throw Exception()
     }
 }
