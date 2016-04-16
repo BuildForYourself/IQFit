@@ -1,6 +1,7 @@
 package com.buildforyourself.iqfit
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -24,22 +25,15 @@ import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.model.FoodComponent
+import lecho.lib.hellocharts.model.*
 
 import java.util.ArrayList
 
-import lecho.lib.hellocharts.model.AbstractChartData
-import lecho.lib.hellocharts.model.Axis
-import lecho.lib.hellocharts.model.Column
-import lecho.lib.hellocharts.model.ColumnChartData
-import lecho.lib.hellocharts.model.ComboLineColumnChartData
-import lecho.lib.hellocharts.model.Line
-import lecho.lib.hellocharts.model.LineChartData
-import lecho.lib.hellocharts.model.PointValue
-import lecho.lib.hellocharts.model.SubcolumnValue
 import lecho.lib.hellocharts.util.ChartUtils
 import lecho.lib.hellocharts.view.ColumnChartView
 import lecho.lib.hellocharts.view.ComboLineColumnChartView
 import lecho.lib.hellocharts.view.LineChartView
+import lecho.lib.hellocharts.view.PieChartView
 
 class ChartTabActivity : AppCompatActivity() {
 
@@ -112,6 +106,13 @@ class ChartTabActivity : AppCompatActivity() {
         private val isCubic = false
         private val hasLabels = false
 
+        private val hasLabelsOutside = false
+        private val hasCenterCircle = true
+        private val hasCenterText1 = true
+        private val hasCenterText2 = true
+        private val isExploded = true
+        private val hasLabelForSelected = true
+
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
             val rootView = inflater!!.inflate(R.layout.fragment_chart_tab, container, false)
@@ -119,8 +120,53 @@ class ChartTabActivity : AppCompatActivity() {
 //            textView.text = getString(R.string.section_format, arguments.getInt(ARG_SECTION_NUMBER))
 
             SetLineColumnChartData(rootView.findViewById(R.id.linecolumnchart) as ComboLineColumnChartView, arguments.getInt(ARG_SECTION_NUMBER))
+            SetPieChartData(rootView.findViewById(R.id.piechart) as PieChartView, arguments.getInt(ARG_SECTION_NUMBER))
 
             return rootView
+        }
+
+        private fun SetPieChartData(chart: PieChartView, anInt: Int) {
+
+            val numValues = 6
+
+            val values = mutableListOf<SliceValue>()
+            for (i in 0..numValues) {
+                val sliceValue = SliceValue((Math.random() * 30 + 15).toFloat(), ChartUtils.pickColor());
+                values.add(sliceValue);
+            }
+
+            val data = PieChartData(values);
+            data.setHasLabels(hasLabels);
+            data.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            data.setHasLabelsOutside(hasLabelsOutside);
+            data.setHasCenterCircle(hasCenterCircle);
+
+            if (isExploded) {
+                data.setSlicesSpacing(5);
+            }
+
+            if (hasCenterText1) {
+                data.setCenterText1("%");
+
+                // Get roboto-italic font.
+                val tf = Typeface.createFromAsset(getActivity().getAssets(), "Roboto-Italic.ttf");
+                data.setCenterText1Typeface(tf);
+
+                // Get font size from dimens.xml and convert it to sp(library uses sp values).
+                data.setCenterText1FontSize(20);
+            }
+
+            if (hasCenterText2) {
+                data.setCenterText2("Charts (Roboto Italic)");
+
+                val tf = Typeface.createFromAsset(getActivity().getAssets(), "Roboto-Italic.ttf");
+
+                data.setCenterText2Typeface(tf);
+                data.setCenterText2FontSize(10);
+            }
+
+            chart.setPieChartData(data);
+
         }
 
         private fun SetLineColumnChartData(chart: ComboLineColumnChartView, anInt: Int) {
