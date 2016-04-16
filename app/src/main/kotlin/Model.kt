@@ -1,6 +1,13 @@
 import android.graphics.drawable.Drawable
 import java.util.*
 
+class Food (
+        val foodCategory: FoodCategory,
+        val foodComponents: List<FoodComponent>,
+        val dateTime: Date,
+        val calories: Int) {
+}
+
 class FoodCategory (
         val name: String,
         val icon: Drawable,
@@ -10,36 +17,35 @@ class FoodCategory (
 }
 
 open class FoodComponent (
- val name: String,
- val icon: Drawable,
- val group: String,
- val isSingle: Boolean,
- var isDefault: Boolean,
- var isSelected: Boolean) {
+        val name: String,
+        val icon: Drawable,
+        val group: String,
+        val isSingle: Boolean,
+        var isDefault: Boolean,
+        var isSelected: Boolean) {
 }
 
-class CalorieComponent
-(name: String,
- icon: Drawable,
- group: String,
- isSingle: Boolean,
- isDefault: Boolean,
- isSelected: Boolean,
- val calories: Int,
- val operation: Operation)
+class CalorieComponent (
+        name: String,
+        icon: Drawable,
+        group: String,
+        isSingle: Boolean,
+        isDefault: Boolean,
+        isSelected: Boolean,
+        val calories: Int,
+        val operation: Operation)
 : FoodComponent(name, icon, group, isSingle, isDefault, isSelected) {
 }
 
-class QuantityComponent
-(name: String,
- icon: Drawable,
- group: String,
- isSingle: Boolean,
- isDefault: Boolean,
- isSelected: Boolean,
- val multiplier: Double)
+class QuantityComponent (
+        name: String,
+        icon: Drawable,
+        group: String,
+        isSingle: Boolean,
+        isDefault: Boolean,
+        isSelected: Boolean,
+        val multiplier: Double)
 : FoodComponent(name, icon, group, isSingle, isDefault, isSelected) {
-
 }
 
 enum class Operation {
@@ -47,10 +53,3 @@ enum class Operation {
     Avg
 }
 
-class Food
-(val foodCategory: FoodCategory,
- val foodComponents: List<FoodComponent>,
- val dateTime: Date,
- val calories: Int) {
-
-}
