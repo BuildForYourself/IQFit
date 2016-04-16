@@ -17,6 +17,7 @@ class FoodCategoriesActivity : AppCompatActivity() {
         val categories = dataProvider.loadFoodCategories()
 
         verticalLayout(){
+            /*
             setSupportActionBar(toolbar {
                 backgroundColor = R.attr.colorPrimary
                 popupTheme = R.style.AppTheme_PopupOverlay
@@ -24,7 +25,7 @@ class FoodCategoriesActivity : AppCompatActivity() {
                 width=matchParent
                 height= R.attr.actionBarSize
             })
-
+            */
             scrollView() {
                 verticalLayout() {
                     var i: Int = 0
