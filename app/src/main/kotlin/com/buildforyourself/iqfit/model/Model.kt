@@ -1,3 +1,5 @@
+package com.buildforyourself.iqfit.model
+
 import android.graphics.drawable.Drawable
 import java.util.*
 
