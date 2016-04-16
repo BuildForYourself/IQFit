@@ -5,7 +5,11 @@ import java.util.*
 
 class User (
         val age : Int,
-        val height : Int)
+        val height : Int,
+        val weight: Double,
+        val fatProcent: Double,
+        var activityType: Formula.ActivityTypos
+)
 
 class Food (
         val id : Int,
