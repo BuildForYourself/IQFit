@@ -2,6 +2,7 @@ package com.buildforyourself.iqfit
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import android.widget.LinearLayout
 import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.data.IDataProvider
@@ -22,6 +23,7 @@ class FoodCategoriesActivity : AppCompatActivity() {
             }.lparams {
                 width = matchParent
                 height = R.attr.actionBarSize
+                gravity = Gravity.TOP
             }
 
             scrollView() {

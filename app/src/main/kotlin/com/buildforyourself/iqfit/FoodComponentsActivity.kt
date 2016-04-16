@@ -50,6 +50,8 @@ class FoodComponentsActivity  : AppCompatActivity() {
                                     isChecked = component.isDefault
                                     onClick {
                                         component.isSelected = !component.isSelected
+                                        if(component.isSingle)
+                                            category.selectSingleComponent(component)
                                     }
                                 }.lparams {
                                     weight = 1f

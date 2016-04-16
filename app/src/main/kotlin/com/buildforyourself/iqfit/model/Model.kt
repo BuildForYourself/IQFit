@@ -36,6 +36,13 @@ class FoodCategory (
         var priority: Int,
         var isActive: Boolean,
         var components: List<FoodComponent>) {
+
+    fun selectSingleComponent(foodComponent: FoodComponent){
+        val sameGroupItems = components.filter { it.group.equals(foodComponent.group)
+                && it.id!=foodComponent.id }
+        for(i in sameGroupItems)
+            i.isSelected = false
+    }
 }
 
 open class FoodComponent (
