@@ -15,6 +15,10 @@ class DataProvider : IDataProvider {
         throw UnsupportedOperationException()
     }
 
+    override fun saveFood(food: Food) {
+        throw UnsupportedOperationException()
+    }
+
     override fun loadFoodCategories(): List<FoodCategory> {
         throw Exception()
     }

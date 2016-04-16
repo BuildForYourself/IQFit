@@ -6,11 +6,13 @@ import android.view.Gravity
 import android.widget.LinearLayout
 import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.data.IDataProvider
+import com.buildforyourself.iqfit.model.Food
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
+import java.util.*
 
 class FoodCategoriesActivity : AppCompatActivity() {
-    var dataProvider : IDataProvider = FakeDataProvider()
+    var dataProvider = FakeDataProvider()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,9 @@ class FoodCategoriesActivity : AppCompatActivity() {
                                             startActivity<FoodComponentsActivity>("categoryId" to category.id)
                                     }
                                     onLongClick {
+                                        val defaultComponents = category.getDefaultComponents()
+                                        val food = Food(0, category, defaultComponents, Date(), 0, 0)
+                                        dataProvider.saveFood(food)
                                         toast("Значение по умолчанию добавлено")
                                         true
                                     }

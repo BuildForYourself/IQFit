@@ -43,6 +43,10 @@ class FoodCategory (
         for(i in sameGroupItems)
             i.isSelected = false
     }
+
+    fun getDefaultComponents() : List<FoodComponent>{
+        return components.filter { it.isDefault }
+    }
 }
 
 open class FoodComponent (

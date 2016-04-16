@@ -11,6 +11,7 @@ interface IDataProvider {
     fun saveFoodCategory(foodCategory: FoodCategory)
 
     fun loadFood() : List<Food>
+    fun saveFood(food: Food)
 
     fun saveDefaultComponents(foodCategory: FoodCategory)
 
