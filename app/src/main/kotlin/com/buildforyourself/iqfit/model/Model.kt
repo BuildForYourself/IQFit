@@ -5,6 +5,7 @@ import kotlin.collections.*
 import java.util.Date
 
 class Food (
+        val id : Int,
         val foodCategory: FoodCategory,
         val foodComponents: List<FoodComponent>,
         val dateTime: Date,
@@ -12,6 +13,7 @@ class Food (
 }
 
 class FoodCategory (
+        val id : Int,
         val name: String,
         val icon: Drawable,
         var priority: Int,
@@ -20,15 +22,17 @@ class FoodCategory (
 }
 
 open class FoodComponent (
+        val id : Int,
         val name: String,
         val icon: Drawable,
-        val group: String,
-        val isSingle: Boolean,
-        var isDefault: Boolean,
-        var isSelected: Boolean) {
+        val group: String = "",
+        val isSingle: Boolean = false,
+        var isDefault: Boolean = false,
+        var isSelected: Boolean = false) {
 }
 
 class CalorieComponent (
+        id : Int,
         name: String,
         icon: Drawable,
         group: String,
@@ -37,10 +41,11 @@ class CalorieComponent (
         isSelected: Boolean,
         val calories: Int,
         val operation: Operation)
-: FoodComponent(name, icon, group, isSingle, isDefault, isSelected) {
+: FoodComponent(id, name, icon, group, isSingle, isDefault, isSelected) {
 }
 
 class QuantityComponent (
+        id : Int,
         name: String,
         icon: Drawable,
         group: String,
@@ -48,7 +53,7 @@ class QuantityComponent (
         isDefault: Boolean,
         isSelected: Boolean,
         val multiplier: Double)
-: FoodComponent(name, icon, group, isSingle, isDefault, isSelected) {
+: FoodComponent(id, name, icon, group, isSingle, isDefault, isSelected) {
 }
 
 enum class Operation {
