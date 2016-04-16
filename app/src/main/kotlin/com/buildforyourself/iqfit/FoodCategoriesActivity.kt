@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.widget.LinearLayout
-import com.buildforyourself.iqfit.data.FakeDataProvider
-import com.buildforyourself.iqfit.data.IDataProvider
+import com.buildforyourself.iqfit.data.DataProviderFactory
 import com.buildforyourself.iqfit.model.Food
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 import java.util.*
 
-class FoodCategoriesActivity : AppCompatActivity() {
-    var dataProvider = FakeDataProvider()
-
+class FoodCategoriesActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val dataProvider = DataProviderFactory.instance.dataProvider
 
         val categories = dataProvider.loadFoodCategories()
 
@@ -45,7 +44,7 @@ class FoodCategoriesActivity : AppCompatActivity() {
                                     text = category.name
                                     textSize = 14f
                                     onClick {
-                                        if (category.components != null && category.components.count() > 0)
+                                        if (category.components.count() > 0)
                                             startActivity<FoodComponentsActivity>("categoryId" to category.id)
                                     }
                                     onLongClick {

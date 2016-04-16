@@ -5,14 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.LinearLayout
-import com.buildforyourself.iqfit.data.FakeDataProvider
-import com.buildforyourself.iqfit.data.IDataProvider
+import com.buildforyourself.iqfit.data.DataProviderFactory
 import com.buildforyourself.iqfit.model.FoodCategory
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 
-class FoodComponentsActivity  : AppCompatActivity() {
-    var dataProvider: IDataProvider = FakeDataProvider()
+class FoodComponentsActivity()  : AppCompatActivity() {
+    val dataProvider = DataProviderFactory.instance.dataProvider
     private var currentCategory: FoodCategory? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
