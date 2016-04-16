@@ -10,10 +10,10 @@
     android:orientation="vertical"
     tools:context="com.buildforyourself.iqfit.ChartTabActivity$PlaceholderFragment">
 
-    <TextView
+<!--    <TextView
         android:id="@+id/section_label"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
 
     <lecho.lib.hellocharts.view.ComboLineColumnChartView
         android:id="@+id/linecolumnchart"
