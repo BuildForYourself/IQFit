@@ -7,6 +7,9 @@ import com.buildforyourself.iqfit.model.*
 import java.util.*
 
 class FakeDataProvider : IDataProvider {
+    override fun saveDefaultComponents(foodCategory: FoodCategory) {
+        throw UnsupportedOperationException()
+    }
 
     override fun saveFoodCategory(foodCategory: FoodCategory) {
         throw UnsupportedOperationException()
@@ -37,31 +40,32 @@ class FakeDataProvider : IDataProvider {
         return food;
     }
 
-    override fun saveDefaultComponents(foodCategory: FoodCategory) {
-
-    }
-
-    override fun loadFoodCategories() : List<FoodCategory> {
-//        var foodCategories: MutableList<FoodCategory> = mutableListOf<FoodCategory>()
-//        for (i : Int in 1..12) {
-//            val foodCategory = FoodCategory ("Суп{i}", BitmapDrawable(), i,  true, listOf<FoodComponent>())
-//            foodCategories.add(foodCategory);
-//        }
+    override fun loadFoodCategories(): List<FoodCategory> {
+        //        var foodCategories: MutableList<FoodCategory> = mutableListOf<FoodCategory>()
+        //        for (i : Int in 1..12) {
+        //            val foodCategory = FoodCategory ("Суп{i}", BitmapDrawable(), i,  true, listOf<FoodComponent>())
+        //            foodCategories.add(foodCategory);
+        //        }
 
         var foodCategories = listOf (
-                FoodCategory (1, "Супы", BitmapDrawable(), 1,  true, getSoupComponents()),
-                FoodCategory (2, "Салаты", BitmapDrawable(), 2,  true, listOf<FoodComponent>()),
-                FoodCategory (3, "Сладости", BitmapDrawable(), 3,  true, listOf<FoodComponent>()),
-                FoodCategory (4, "Напитки", BitmapDrawable(), 4,  true, listOf<FoodComponent>()),
-                FoodCategory (5, "Фрукты", BitmapDrawable(), 5,  true, listOf<FoodComponent>()),
-                FoodCategory (6, "Мясо", BitmapDrawable(), 6,  true, listOf<FoodComponent>()),
-                FoodCategory (7, "Сыры", BitmapDrawable(), 7,  true, listOf<FoodComponent>())
+                FoodCategory (1, "Супы", BitmapDrawable(), 1, true, getSoupComponents()),
+                FoodCategory (2, "Салаты", BitmapDrawable(), 2, true, getDrinksComponents()),
+                FoodCategory (3, "Сладости", BitmapDrawable(), 3, true, listOf<FoodComponent>()),
+                FoodCategory (4, "Напитки", BitmapDrawable(), 4, true, listOf<FoodComponent>()),
+                FoodCategory (5, "Фрукты", BitmapDrawable(), 5, true, listOf<FoodComponent>()),
+                FoodCategory (6, "Овощи", BitmapDrawable(), 6, true, listOf<FoodComponent>()),
+                FoodCategory (7, "Мясо", BitmapDrawable(), 7, true, listOf<FoodComponent>()),
+                FoodCategory (8, "Рыба", BitmapDrawable(), 8, true, listOf<FoodComponent>()),
+                FoodCategory (9, "Гарниры", BitmapDrawable(), 9, true, listOf<FoodComponent>()),
+                FoodCategory (10, "Снеки", BitmapDrawable(), 10, true, listOf<FoodComponent>()),
+                FoodCategory (11, "Фастфуд", BitmapDrawable(), 11, true, listOf<FoodComponent>()),
+                FoodCategory (12, "Молочное", BitmapDrawable(), 12, true, listOf<FoodComponent>())
         )
 
         return foodCategories;
     }
 
-    private fun getSoupComponents() : List<FoodComponent>{
+    private fun getSoupComponents(): List<FoodComponent> {
         return listOf(
                 CalorieComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true, calories = 80),
                 CalorieComponent(2, "Картофель", BitmapDrawable(), "", calories = 20),
@@ -77,6 +81,21 @@ class FakeDataProvider : IDataProvider {
                 CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120),
                 QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
                 QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+        )
+    }
+
+    private fun getDrinksComponents(): List<FoodComponent> {
+        return listOf(
+                CalorieComponent(1, "Кофе", BitmapDrawable(), "", isDefault = true, calories = 10),
+                CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
+                CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15),
+                CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37),
+                CalorieComponent(5, "Фруктовый Сок", BitmapDrawable(), "", calories = 100),
+                CalorieComponent(6, "Овощной сок", BitmapDrawable(), "", calories = 40),
+                CalorieComponent(7, "Газировка", BitmapDrawable(), "", calories = 80),
+                CalorieComponent(8, "Пиво", BitmapDrawable(), "", calories = 215),
+                CalorieComponent(9, "Вино", BitmapDrawable(), "", calories = 113),
+                CalorieComponent(10, "Крепкий алкоголь", BitmapDrawable(), "", calories = 114)
         )
     }
 }
