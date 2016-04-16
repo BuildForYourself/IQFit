@@ -1,5 +1,6 @@
 package com.buildforyourself.iqfit
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
@@ -7,9 +8,14 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.ListViewCompat
 import android.support.v7.widget.Toolbar
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
+import android.widget.BaseAdapter
+import android.widget.ListView
+import android.widget.TextView
+import com.buildforyourself.iqfit.data.FakeDataProvider
+import com.buildforyourself.iqfit.model.Food
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 
@@ -35,19 +41,80 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         val navigationView = find<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        createFoodItems()
+        val lv = findViewById(R.id.list_view) as ListView
+        lv.adapter = ListExampleAdapter(this)
     }
+
+    private class ListExampleAdapter(context: Context) : BaseAdapter() {
+        internal var foods: List<Food>
+        private val mInflator: LayoutInflater
+
+        init {
+            val dataProvider = FakeDataProvider()
+            foods = dataProvider.loadFood();
+            this.mInflator = LayoutInflater.from(context)
+        }
+
+        override fun getCount(): Int {
+            return foods.size
+        }
+
+        override fun getItem(position: Int): Any {
+            return foods[position]
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
+            val view: View?
+            val vh: ListRowHolder
+            if (convertView == null) {
+                view = this.mInflator.inflate(R.layout.food_layout, parent, false)
+                vh = ListRowHolder(view)
+                view.tag = vh
+            } else {
+                view = convertView
+                vh = view.tag as ListRowHolder
+            }
+
+            vh.category_label.text = foods[position].foodCategory.name
+            vh.percent_label.text = foods[position].percent.toString()
+            //vh.icon.drawable = sList[position].foodCategory.icon
+            return view
+        }
+    }
+
+    private class ListRowHolder(row: View?) {
+        val category_label: TextView
+        val percent_label: TextView
+        //val icon: ImageView
+        init {
+            this.category_label = row?.findViewById(R.id.food_category_name) as TextView
+            this.percent_label = row?.findViewById(R.id.percent) as TextView
+            //this.icon = row?.findViewById(R.id.icon) as ImageView
+        }
+    }
+
+
+
+
+
+
 
     fun createFoodItems()
     {
-       /* val scrollView = find<NestedScrollView>(R.id.scroll_stack_view)
+        val scrollView = find<ListViewCompat>(R.id.list_view)
         val dataProvider = FakeDataProvider()
-
+        //scrollView.adapter = dataProvider.loadFood();
         val foods = dataProvider.loadFood()
-        scrollView.view{
-            scrollView.addView(verticalLayout() { button() })
+
+        for (food in foods)
+        {
+
         }
-        */
+
     }
 
     override fun onBackPressed() {

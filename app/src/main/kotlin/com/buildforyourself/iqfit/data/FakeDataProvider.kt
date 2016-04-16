@@ -12,13 +12,13 @@ class FakeDataProvider : IDataProvider {
         val foodCategories = loadFoodCategories();
 
         var food = listOf (
-                Food (1, foodCategories[0], listOf(), Date(), 10),
-                Food (2, foodCategories[1], listOf(), Date(), 10),
-                Food (3, foodCategories[2], listOf(), Date(), 10),
-                Food (4, foodCategories[3], listOf(), Date(), 10),
-                Food (5, foodCategories[4], listOf(), Date(), 10),
-                Food (6, foodCategories[5], listOf(), Date(), 10),
-                Food (7, foodCategories[6], listOf(), Date(), 10)
+                Food (1, foodCategories[0], listOf(), Date(), 10, 15),
+                Food (2, foodCategories[1], listOf(), Date(), 10, 15),
+                Food (3, foodCategories[2], listOf(), Date(), 10, 15),
+                Food (4, foodCategories[3], listOf(), Date(), 10, 15),
+                Food (5, foodCategories[4], listOf(), Date(), 10, 15),
+                Food (6, foodCategories[5], listOf(), Date(), 10, 15),
+                Food (7, foodCategories[6], listOf(), Date(), 10, 15)
         )
 
         return food;

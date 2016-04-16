@@ -1,15 +1,15 @@
 package com.buildforyourself.iqfit.model
 
 import android.graphics.drawable.Drawable
-import kotlin.collections.*
-import java.util.Date
+import java.util.*
 
 class Food (
         val id : Int,
         val foodCategory: FoodCategory,
         val foodComponents: List<FoodComponent>,
         val dateTime: Date,
-        val calories: Int) {
+        val calories: Int,
+        val percent: Int) {
 }
 
 class FoodCategory (
