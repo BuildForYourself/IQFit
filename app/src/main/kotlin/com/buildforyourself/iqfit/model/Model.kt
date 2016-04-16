@@ -1,13 +1,22 @@
 package com.buildforyourself.iqfit.model
 
 import android.graphics.drawable.Drawable
+import com.buildforyourself.iqfit.data.IQFitDatabase
+import com.raizlabs.android.dbflow.annotation.Column
+import com.raizlabs.android.dbflow.annotation.Table
 import java.util.*
 
+@Table(database = IQFitDatabase::class)
 class User (
+        @Column
         val age : Int,
+        @Column
         val height : Int,
+        @Column
         val weight: Double,
-        val fatProcent: Double,
+        @Column
+        val fatPercent: Double,
+        @Column
         var activityType: Formula.ActivityTypos
 )
 
