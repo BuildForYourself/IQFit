@@ -2,7 +2,6 @@ package com.buildforyourself.iqfit
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Gravity
 import android.widget.LinearLayout
 import com.buildforyourself.iqfit.data.DataProviderFactory
 import com.buildforyourself.iqfit.model.Food
@@ -21,10 +20,6 @@ class FoodCategoriesActivity() : AppCompatActivity() {
         verticalLayout(){
             toolbar(){
                 title = getString(R.string.food_category_title)
-            }.lparams {
-                width = matchParent
-                height = R.attr.actionBarSize
-                gravity = Gravity.TOP
             }
 
             scrollView() {

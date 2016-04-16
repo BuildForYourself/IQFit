@@ -25,9 +25,6 @@ class FoodComponentsActivity()  : AppCompatActivity() {
         verticalLayout() {
             setSupportActionBar(toolbar() {
                 title = getString(R.string.food_components_title)
-            }.lparams {
-                width = matchParent
-                height = R.attr.actionBarSize
             })
             scrollView() {
                 verticalLayout() {
