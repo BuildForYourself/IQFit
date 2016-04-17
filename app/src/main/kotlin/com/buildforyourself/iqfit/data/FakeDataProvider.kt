@@ -93,7 +93,19 @@ class FakeDataProvider() : IDataProvider {
     }
 
     private fun getMilkComponents(): List<FoodComponent> {
-        return listOf()
+        return listOf(
+                CalorieComponent(1, "Плавленый сыр", BitmapDrawable(), "", calories = 65, operation = Operation.Avg),
+                CalorieComponent(2, "Нежирный сыр", BitmapDrawable(), "", isDefault = true, calories = 75, operation = Operation.Avg),
+                CalorieComponent(3, "Сыр", BitmapDrawable(), "", calories = 144, operation = Operation.Avg),
+                CalorieComponent(4, "Творог нежирный", BitmapDrawable(), "", calories = 101, operation = Operation.Avg),
+                CalorieComponent(5, "Творог полужирный", BitmapDrawable(), "", calories = 101, operation = Operation.Avg),
+                CalorieComponent(6, "Творог жирный", BitmapDrawable(), "", calories = 108, operation = Operation.Avg),
+                CalorieComponent(6, "Сырок творожный", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
+                CalorieComponent(4, "Сахар/мёд/варенье", BitmapDrawable(), "", calories = 37, operation = Operation.Sum),
+                CalorieComponent(6, "Сметана (ложка)", BitmapDrawable(), "", calories = 35, operation = Operation.Sum),
+                QuantityComponent(7, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(8, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+        )
     }
 
     private fun getSnackComponents(): List<FoodComponent> {
