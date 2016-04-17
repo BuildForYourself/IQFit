@@ -4,11 +4,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
+import com.buildforyourself.iqfit.calc.FoodCalculator
 import com.buildforyourself.iqfit.data.DataProviderFactory
-import com.buildforyourself.iqfit.model.Food
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
-import java.util.*
 
 class FoodCategoriesActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +45,8 @@ class FoodCategoriesActivity() : AppCompatActivity() {
                                     }
                                     setOnLongClickListener {
                                         val defaultComponents = category.getDefaultComponents()
-                                        val food = Food(0, category, defaultComponents, Date(), 0, 0)
+                                        var calculator = FoodCalculator()
+                                        var food = calculator.calculateFood(category, defaultComponents)
                                         dataProvider.saveFood(food)
                                         toast("Значение по умолчанию добавлено")
                                         finish()
