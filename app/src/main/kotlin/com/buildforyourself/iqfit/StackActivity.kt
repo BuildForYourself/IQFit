@@ -8,7 +8,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.ListViewCompat
 import android.support.v7.widget.Toolbar
 import android.view.*
 import android.widget.BaseAdapter
@@ -44,6 +43,10 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         val navigationView = find<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
+
+    }
+
+    override fun onResume() {
         val lv = findViewById(R.id.list_view) as ListView
 
         lv.adapter = ListExampleAdapter(this, FakeDataProvider().loadFood())
@@ -53,6 +56,8 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             val food = lea.getItem(i) as Food
             toast("Количество калорий ${food.calories}")
         }
+
+        super.onResume()
     }
 
     private class ListExampleAdapter(context: Context, foods: List<Food>) : BaseAdapter() {
@@ -110,26 +115,6 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             this.food = food
             //this.icon = row?.findViewById(R.id.icon) as ImageView
         }
-    }
-
-
-
-
-
-
-
-    fun createFoodItems()
-    {
-        val scrollView = find<ListViewCompat>(R.id.list_view)
-        val dataProvider = FakeDataProvider()
-        //scrollView.adapter = dataProvider.loadFood();
-        val foods = dataProvider.loadFood()
-
-        for (food in foods)
-        {
-
-        }
-
     }
 
     override fun onBackPressed() {
