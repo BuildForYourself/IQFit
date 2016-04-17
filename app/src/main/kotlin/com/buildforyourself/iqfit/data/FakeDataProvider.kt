@@ -79,7 +79,16 @@ class FakeDataProvider() : IDataProvider {
 
     private fun getFastFoodComponents(): List<FoodComponent> {
         return listOf(
-
+                CalorieComponent(1, "Чизбургер", BitmapDrawable(), "", calories = 304, operation = Operation.Sum),
+                CalorieComponent(2, "Биг Тейсти", BitmapDrawable(), "", isDefault = true, calories = 842, operation = Operation.Sum),
+                CalorieComponent(3, "Филе-о-фиш", BitmapDrawable(), "", calories = 333, operation = Operation.Sum),
+                CalorieComponent(5, "Биф ролл", BitmapDrawable(), "", calories = 555, operation = Operation.Sum),
+                CalorieComponent(6, "Картофель фри", BitmapDrawable(), "", calories = 239, operation = Operation.Sum),
+                CalorieComponent(6, "Картофель по деревенски", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
+                CalorieComponent(6, "Шаверма", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
+                QuantityComponent(7, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(7, "Средняя порции", BitmapDrawable(), "", multiplier = 1.4),
+                QuantityComponent(8, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
         )
     }
 
