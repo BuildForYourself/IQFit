@@ -179,16 +179,16 @@ class FakeDataProvider() : IDataProvider {
     private fun getDrinksComponents(): List<FoodComponent> {
 
         return listOf(
-                CalorieComponent(1, "Кофе", getIcon(R.drawable.drink), "", isDefault = true, calories = 10),
-                CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
-                CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15),
-                CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37),
-                CalorieComponent(5, "Фруктовый Сок", BitmapDrawable(), "", calories = 100),
-                CalorieComponent(6, "Овощной сок", BitmapDrawable(), "", calories = 40),
-                CalorieComponent(7, "Газировка", BitmapDrawable(), "", calories = 80),
-                CalorieComponent(8, "Пиво", BitmapDrawable(), "", calories = 215),
-                CalorieComponent(9, "Вино", BitmapDrawable(), "", calories = 113),
-                CalorieComponent(10, "Крепкий алкоголь", BitmapDrawable(), "", false, false, false, 114, Operation.Sum)
+                CalorieComponent(1, "Кофе", getIcon(R.drawable.drink), "", isDefault = true, calories = 10, operation = Operation.Sum),
+                CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6, operation = Operation.Sum),
+                CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15, operation = Operation.Sum),
+                CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37,operation = Operation.Sum),
+                CalorieComponent(5, "Фруктовый Сок", BitmapDrawable(), "", calories = 100,operation = Operation.Sum),
+                CalorieComponent(6, "Овощной сок", BitmapDrawable(), "", calories = 40,operation = Operation.Sum),
+                CalorieComponent(7, "Газировка", BitmapDrawable(), "", calories = 80,operation = Operation.Sum),
+                CalorieComponent(8, "Пиво", BitmapDrawable(), "", calories = 215,operation = Operation.Sum),
+                CalorieComponent(9, "Вино", BitmapDrawable(), "", calories = 113,operation = Operation.Sum),
+                CalorieComponent(10, "Крепкий алкоголь", BitmapDrawable(), "", calories =  114, operation = Operation.Sum)
         )
     }
 }
