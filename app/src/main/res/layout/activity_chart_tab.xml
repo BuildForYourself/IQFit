@@ -46,6 +46,7 @@
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:fabSize="normal"
-        android:tint="#000000" />
+        android:tint="#000000"
+        android:visibility="gone"/>
 
 </android.support.design.widget.CoordinatorLayout>
