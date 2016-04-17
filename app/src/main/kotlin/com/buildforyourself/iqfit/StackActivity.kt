@@ -1,11 +1,9 @@
 package com.buildforyourself.iqfit
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
-import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -17,7 +15,6 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import com.buildforyourself.iqfit.data.DataProviderFactory
-import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.util.DbGenerator
 import org.jetbrains.anko.find
@@ -65,7 +62,7 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     }
 
     private class ListExampleAdapter(context: Context) : BaseAdapter() {
-        val foods: List<Food> = DataProviderFactory.instance.dataProvider.loadFood()
+        val foods: List<Food> = DataProviderFactory.instance.dataProvider.loadFood().sortedByDescending { f -> f.dateTime }
         private val mInflator: LayoutInflater
 
         init {
