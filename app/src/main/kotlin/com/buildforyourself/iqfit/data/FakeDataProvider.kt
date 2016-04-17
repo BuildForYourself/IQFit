@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import com.buildforyourself.iqfit.IQFitApplication
 import com.buildforyourself.iqfit.R
+import com.buildforyourself.iqfit.calc.FoodCalculator
 import com.buildforyourself.iqfit.calc.Formula
 import com.buildforyourself.iqfit.model.*
 import java.util.*
@@ -34,29 +35,20 @@ class FakeDataProvider() : IDataProvider {
     }
 
     override fun loadFood(): List<Food> {
-
-        /*
         val foodCategories = loadFoodCategories();
 
-        var food = listOf (
-                Food (1, foodCategories[0], listOf(), Date(), 10, 1),
-                Food (2, foodCategories[1], listOf(), Date(), 10, 2),
-                Food (3, foodCategories[2], listOf(), Date(), 10, 3),
-                Food (4, foodCategories[3], listOf(), Date(), 10, 4),
-                Food (5, foodCategories[4], listOf(), Date(), 10, 5),
-                Food (6, foodCategories[5], listOf(), Date(), 10, 6),
-                Food (7, foodCategories[6], listOf(), Date(), 10, 7),
-                Food (8, foodCategories[0], listOf(), Date(), 10, 8),
-                Food (9, foodCategories[1], listOf(), Date(), 10, 9),
-                Food (10, foodCategories[2], listOf(), Date(), 10, 10),
-                Food (11, foodCategories[3], listOf(), Date(), 10, 11),
-                Food (12, foodCategories[4], listOf(), Date(), 10, 12),
-                Food (13, foodCategories[5], listOf(), Date(), 10, 13),
-                Food (14, foodCategories[6], listOf(), Date(), 10, 14)
-        )
-        */
+        var foodList = mutableListOf<Food>()
+        for(i: Int in 1..1000)
+        {
+            val categoryId = Random().nextInt(11);
+            val category = foodCategories[categoryId];
+            val defaultComponents = category.getDefaultComponents()
+            val calculator = FoodCalculator()
+            val food = calculator.calculateFood(category, defaultComponents)
+            foodList.add(food)
+        }
 
-        return foods;
+        return foodList;
     }
 
     override fun loadFoodCategories(): List<FoodCategory> {
@@ -66,12 +58,12 @@ class FakeDataProvider() : IDataProvider {
                 FoodCategory (3, "Сладкое", getIcon(R.drawable.bakery), 3, true, getSweetComponents()),
                 FoodCategory (4, "Напиток", getIcon(R.drawable.drink), 4, true, getDrinksComponents()),
                 FoodCategory (5, "Фрукт", getIcon(R.drawable.apple), 5, true, getFruitComponents()),
-                FoodCategory (7, "Мясо", getIcon(R.drawable.meat), 7, true, getMeatComponents()),
-                FoodCategory (8, "Рыба", getIcon(R.drawable.fish), 8, true, getFishComponents()),
-                FoodCategory (9, "Гарнир", getIcon(R.drawable.seconddish), 9, true, getSecondCourseComponents()),
-                FoodCategory (10, "Снек", getIcon(R.drawable.nut), 10, true, getSnackComponents()),
-                FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, getFastFoodComponents()),
-                FoodCategory (12, "Молочный продукт", getIcon(R.drawable.milk), 12, true, getMilkComponents())
+                FoodCategory (6, "Мясо", getIcon(R.drawable.meat), 7, true, getMeatComponents()),
+                FoodCategory (7, "Рыба", getIcon(R.drawable.fish), 8, true, getFishComponents()),
+                FoodCategory (8, "Гарнир", getIcon(R.drawable.seconddish), 9, true, getSecondCourseComponents()),
+                FoodCategory (9, "Снек", getIcon(R.drawable.nut), 10, true, getSnackComponents()),
+                FoodCategory (10, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, getFastFoodComponents()),
+                FoodCategory (11, "Молочный продукт", getIcon(R.drawable.milk), 12, true, getMilkComponents())
         )
 
         return foodCategories;
