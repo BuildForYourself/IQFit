@@ -3,6 +3,7 @@ package com.buildforyourself.iqfit
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.Menu
@@ -71,6 +72,7 @@ class FoodComponentsActivity() : AppCompatActivity() {
                 }
                 floatingActionButton {
                     background = ColorDrawable(Color.parseColor("#14ae21"))
+                    setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_menu_send))
                     onClick {
                         addFoodAndExit(category)
                     }
