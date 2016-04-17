@@ -79,21 +79,7 @@ class FakeDataProvider() : IDataProvider {
 
     private fun getFastFoodComponents(): List<FoodComponent> {
         return listOf(
-                CalorieComponent(1, "Свинина", BitmapDrawable(), "", isDefault = true, calories = 525, operation = Operation.Avg),
-                CalorieComponent(2, "Птица", BitmapDrawable(), "", calories = 180, operation = Operation.Avg),
-                CalorieComponent(3, "Говядина", BitmapDrawable(), "", calories = 330, operation = Operation.Avg),
-                CalorieComponent(4, "Субпродукты", BitmapDrawable(), "", calories = 210, operation = Operation.Avg),
-                CalorieComponent(5, "Паштет", BitmapDrawable(), "", calories = 450, operation = Operation.Avg),
-                CalorieComponent(6, "Колбаса Варёная, ломтик", BitmapDrawable(), "", calories = 40, operation = Operation.Sum),
-                CalorieComponent(15, "Колбаса Копчёная, ломтик", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
-                QuantityComponent(7, "Варёный", BitmapDrawable(), "", multiplier = 0.5),
-                CalorieComponent(8, "Жареный", BitmapDrawable(), "", calories = 200, operation = Operation.Avg),
-                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 35, operation = Operation.Sum),
-                CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
-                CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
-                CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120, operation = Operation.Sum),
-                QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+
         )
     }
 
@@ -110,7 +96,23 @@ class FakeDataProvider() : IDataProvider {
     }
 
     private fun getMeatComponents(): List<FoodComponent> {
-        return listOf()
+        return listOf(
+                CalorieComponent(1, "Свинина", BitmapDrawable(), "", isDefault = true, calories = 525, operation = Operation.Avg),
+                CalorieComponent(2, "Птица", BitmapDrawable(), "", calories = 180, operation = Operation.Avg),
+                CalorieComponent(3, "Говядина", BitmapDrawable(), "", calories = 330, operation = Operation.Avg),
+                CalorieComponent(4, "Субпродукты", BitmapDrawable(), "", calories = 210, operation = Operation.Avg),
+                CalorieComponent(5, "Паштет", BitmapDrawable(), "", calories = 450, operation = Operation.Avg),
+                CalorieComponent(6, "Колбаса Варёная, ломтик", BitmapDrawable(), "", calories = 40, operation = Operation.Sum),
+                CalorieComponent(15, "Колбаса Копчёная, ломтик", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
+                QuantityComponent(7, "Варёный", BitmapDrawable(), "", multiplier = 0.5),
+                CalorieComponent(8, "Жареный", BitmapDrawable(), "", calories = 200, operation = Operation.Avg),
+                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 35, operation = Operation.Sum),
+                CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
+                CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
+                CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120, operation = Operation.Sum),
+                QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+        )
     }
 
     private fun getFruitComponents(): List<FoodComponent> {
