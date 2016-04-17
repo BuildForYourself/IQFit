@@ -44,11 +44,12 @@ class FoodCategoriesActivity() : AppCompatActivity() {
                                         if (category.components.count() > 0)
                                             startActivity<FoodComponentsActivity>("categoryId" to category.id)
                                     }
-                                    onLongClick {
+                                    setOnLongClickListener {
                                         val defaultComponents = category.getDefaultComponents()
                                         val food = Food(0, category, defaultComponents, Date(), 0, 0)
                                         dataProvider.saveFood(food)
                                         toast("Значение по умолчанию добавлено")
+                                        finish()
                                         true
                                     }
                                 }.lparams {

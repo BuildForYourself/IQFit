@@ -6,7 +6,7 @@ import java.util.*
 
 class FakeDataProvider : IDataProvider {
     override fun saveFood(food: Food) {
-        throw UnsupportedOperationException()
+        //throw UnsupportedOperationException()
     }
 
     override fun saveDefaultComponents(foodCategory: FoodCategory) {

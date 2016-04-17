@@ -1,19 +1,20 @@
 package com.buildforyourself.iqfit
 
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.design.widget.CoordinatorLayout
-import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.LinearLayout
 import com.buildforyourself.iqfit.data.DataProviderFactory
+import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.util.floatingActionButton
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
+import java.util.*
 
 class FoodComponentsActivity() : AppCompatActivity() {
     val dataProvider = DataProviderFactory.instance.dataProvider
@@ -67,11 +68,27 @@ class FoodComponentsActivity() : AppCompatActivity() {
                     }
                 }
             }
-            floatingActionButton { }.lparams {
+            floatingActionButton {
+                background = ColorDrawable(Color.parseColor("#14ae21"))
+                elevation = dip(6).toFloat()
+                onClick {
+                    addFoodAndExit(category)
+                }
+
+            }.lparams {
                 margin = dip(16)
+
                 gravity = Gravity.END or Gravity.BOTTOM
             }
         }
+    }
+
+    fun addFoodAndExit(category: FoodCategory)
+    {
+
+        val food = Food(0, category, listOf(), Date(), 0, 0)
+        dataProvider.saveFood(food)
+        finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
