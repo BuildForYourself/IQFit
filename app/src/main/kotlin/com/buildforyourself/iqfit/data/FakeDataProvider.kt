@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import com.buildforyourself.iqfit.IQFitApplication
 import com.buildforyourself.iqfit.R
+import com.buildforyourself.iqfit.calc.Formula
 import com.buildforyourself.iqfit.model.*
 import java.util.*
 
@@ -14,6 +15,7 @@ class FakeDataProvider() : IDataProvider {
     }
 
     private val foods = mutableListOf<Food>()
+    private val user = User(30, 185, 86.0, 20.0, Formula.ActivityTypes.SPORTY)
 
     override fun saveDefaultComponents(foodCategory: FoodCategory) {
         throw UnsupportedOperationException()
@@ -24,7 +26,7 @@ class FakeDataProvider() : IDataProvider {
     }
 
     override fun loadUser(): User? {
-        throw UnsupportedOperationException()
+        return user
     }
 
     override fun saveUser(user: User) {
@@ -58,28 +60,18 @@ class FakeDataProvider() : IDataProvider {
     }
 
     override fun loadFoodCategories(): List<FoodCategory> {
-        //        var foodCategories: MutableList<FoodCategory> = mutableListOf<FoodCategory>()
-        //        for (i : Int in 1..12) {
-        //            val foodCategory = FoodCategory ("Суп{i}", BitmapDrawable(), i,  true, listOf<FoodComponent>())
-        //            foodCategories.add(foodCategory);
-        //        }
-
-        val context = IQFitApplication.instance.applicationContext
-        var drawable1 = ContextCompat.getDrawable(context, R.drawable.fastfood);
-        var drawable2 = ContextCompat.getDrawable(context, R.drawable.salad);
-
         var foodCategories = listOf (
-                FoodCategory (1, "Супы", getIcon(R.drawable.soup), 1, true, getSoupComponents()),
-                FoodCategory (2, "Салаты", getIcon(R.drawable.salad), 2, true, getSaladComponents()),
-                FoodCategory (3, "Сладости", getIcon(R.drawable.bakery), 3, true, getSweetComponents()),
-                FoodCategory (4, "Напитки", getIcon(R.drawable.drink), 4, true, getDrinksComponents()),
-                FoodCategory (5, "Фрукты", getIcon(R.drawable.apple), 5, true, getFruitComponents()),
+                FoodCategory (1, "Суп", getIcon(R.drawable.soup), 1, true, getSoupComponents()),
+                FoodCategory (2, "Салат", getIcon(R.drawable.salad), 2, true, getSaladComponents()),
+                FoodCategory (3, "Сладкое", getIcon(R.drawable.bakery), 3, true, getSweetComponents()),
+                FoodCategory (4, "Напиток", getIcon(R.drawable.drink), 4, true, getDrinksComponents()),
+                FoodCategory (5, "Фрукт", getIcon(R.drawable.apple), 5, true, getFruitComponents()),
                 FoodCategory (7, "Мясо", getIcon(R.drawable.meat), 7, true, getMeatComponents()),
                 FoodCategory (8, "Рыба", getIcon(R.drawable.fish), 8, true, getFishComponents()),
-                FoodCategory (9, "Гарниры", getIcon(R.drawable.seconddish), 9, true, getSecondCourseComponents()),
-                FoodCategory (10, "Снеки", getIcon(R.drawable.nut), 10, true, getSnackComponents()),
+                FoodCategory (9, "Гарнир", getIcon(R.drawable.seconddish), 9, true, getSecondCourseComponents()),
+                FoodCategory (10, "Снек", getIcon(R.drawable.nut), 10, true, getSnackComponents()),
                 FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, getFatFoodComponents()),
-                FoodCategory (12, "Молочное", getIcon(R.drawable.milk), 12, true, getMilkComponents())
+                FoodCategory (12, "Молочный продукт", getIcon(R.drawable.milk), 12, true, getMilkComponents())
         )
 
         return foodCategories;
@@ -182,6 +174,7 @@ class FakeDataProvider() : IDataProvider {
     }
 
     private fun getDrinksComponents(): List<FoodComponent> {
+
         return listOf(
                 CalorieComponent(1, "Кофе", getIcon(R.drawable.drink), "", isDefault = true, calories = 10),
                 CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
