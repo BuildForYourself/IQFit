@@ -8,6 +8,7 @@ import com.buildforyourself.iqfit.R
 import com.buildforyourself.iqfit.calc.FoodCalculator
 import com.buildforyourself.iqfit.calc.Formula
 import com.buildforyourself.iqfit.model.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class FakeDataProvider() : IDataProvider {
@@ -15,7 +16,7 @@ class FakeDataProvider() : IDataProvider {
         foods.add(food)
     }
 
-    private val foods = mutableListOf<Food>()
+    private var foods = mutableListOf<Food>()
     private val user = User(30, 185, 86.0, 20.0, Formula.ActivityTypes.SPORTY)
 
     override fun saveDefaultComponents(foodCategory: FoodCategory) {
@@ -35,20 +36,36 @@ class FakeDataProvider() : IDataProvider {
     }
 
     override fun loadFood(): List<Food> {
-        val foodCategories = loadFoodCategories();
-
-        var foodList = mutableListOf<Food>()
-        for(i: Int in 1..1000)
+        if (foods.count() == 0)
         {
-            val categoryId = Random().nextInt(11);
-            val category = foodCategories[categoryId];
-            val defaultComponents = category.getDefaultComponents()
-            val calculator = FoodCalculator()
-            val food = calculator.calculateFood(category, defaultComponents)
-            foodList.add(food)
-        }
+            val foodCategories = loadFoodCategories();
 
-        return foodList;
+            foods = mutableListOf<Food>()
+            var sdf = SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+            var dateInString = "01-01-2016 01:10:10";
+            var date = sdf.parse(dateInString);
+            for(i: Int in 1..1)
+            {
+                // N products per day
+                for (j: Int in 1 .. 8) {
+                    val categoryId = Random().nextInt(11);
+                    val category = foodCategories[categoryId];
+                    val defaultComponents = category.getDefaultComponents()
+                    val calculator = FoodCalculator()
+                    val food = calculator.calculateFood(category, defaultComponents)
+                    date = getNextDate(date)
+                    food.dateTime = date;
+                    foods.add(food)
+                }
+            }
+        }
+        return foods;
+    }
+
+    private fun getNextDate(date: Date): Date {
+        val daySeconds = 1000 * 60 * 60 * 24
+        var newDate = Date(date.getTime() + daySeconds)
+        return newDate
     }
 
     override fun loadFoodCategories(): List<FoodCategory> {

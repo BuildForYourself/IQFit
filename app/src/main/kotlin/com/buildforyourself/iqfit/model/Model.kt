@@ -17,7 +17,7 @@ class Food (
         val id : Int = 0,
         val foodCategory: FoodCategory,
         val foodComponents: List<FoodComponent>,
-        val dateTime: Date,
+        var dateTime: Date,
         val calories: Int,
         val percent: Int) {
 }
