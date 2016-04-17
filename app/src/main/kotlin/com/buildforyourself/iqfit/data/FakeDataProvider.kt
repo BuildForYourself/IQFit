@@ -85,22 +85,7 @@ class FakeDataProvider() : IDataProvider {
         return foodCategories;
     }
 
-    private fun getSweetComponents(): List<FoodComponent> {
-        return listOf(
-                CalorieComponent(1, "Плитка Шоколада", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
-                CalorieComponent(2, "Пастила, зефир, мармелад", BitmapDrawable(), "", calories = 65, operation = Operation.Sum),
-                CalorieComponent(3, "Карамель, леденцы", BitmapDrawable(), "", calories = 57, operation = Operation.Sum),
-                CalorieComponent(4, "Мороженое", BitmapDrawable(), "", calories = 168, operation = Operation.Sum),
-                CalorieComponent(5, "Печенье, крекер", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
-                CalorieComponent(6, "Шок. конфета", BitmapDrawable(), "", calories = 100, operation = Operation.Sum),
-                CalorieComponent(7, "Пирожное", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
-                QuantityComponent(8, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(9, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0),
-                QuantityComponent(9, "Тройная порция", BitmapDrawable(), "", multiplier = 3.0)
-        )
-    }
-
-    private fun getIcon(iconId: Int): Drawable {
+    private fun getIcon(iconId: Int) : Drawable {
         val context = IQFitApplication.instance.applicationContext
         var drawable = ContextCompat.getDrawable(context, iconId);
         return drawable;
@@ -108,37 +93,20 @@ class FakeDataProvider() : IDataProvider {
 
     private fun getSoupComponents(): List<FoodComponent> {
         return listOf(
-                CalorieComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true, calories = 80, operation = Operation.Avg),
-                CalorieComponent(2, "Картофель", BitmapDrawable(), "", calories = 20, operation = Operation.Avg),
-                CalorieComponent(3, "Горох, фасоль", BitmapDrawable(), "", calories = 20, operation = Operation.Avg),
-                CalorieComponent(4, "Крем, сыр", BitmapDrawable(), "", calories = 20, operation = Operation.Avg),
-                CalorieComponent(5, "Макароны, клецки", BitmapDrawable(), "", calories = 40, operation = Operation.Avg),
-                CalorieComponent(6, "Мясо, рыба", BitmapDrawable(), "", calories = 50, operation = Operation.Avg),
-                CalorieComponent(7, "Жирный бульон", BitmapDrawable(), "", calories = 60, operation = Operation.Avg),
-                CalorieComponent(8, "Зажарка, сало", BitmapDrawable(), "", calories = 100, operation = Operation.Avg),
-                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 35, operation = Operation.Sum),
-                CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
-                CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
-                CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120, operation = Operation.Sum),
+                CalorieComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true, calories = 80),
+                CalorieComponent(2, "Картофель", BitmapDrawable(), "", calories = 20),
+                CalorieComponent(3, "Горох, фасоль", BitmapDrawable(), "", calories = 20),
+                CalorieComponent(4, "Крем, сыр", BitmapDrawable(), "", calories = 20),
+                CalorieComponent(5, "Макароны, клецки", BitmapDrawable(), "", calories = 40),
+                CalorieComponent(6, "Мясо, рыба", BitmapDrawable(), "", calories = 50),
+                CalorieComponent(7, "Жирный бульон", BitmapDrawable(), "", calories = 60),
+                CalorieComponent(8, "Зажарка, сало", BitmapDrawable(), "", calories = 100),
+                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 35),
+                CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85),
+                CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80),
+                CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120),
                 QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
-        )
-    }
-
-    private fun getSaladComponents(): List<FoodComponent> {
-        return listOf(
-                CalorieComponent(1, "Огурцы, помидоры, зелень", BitmapDrawable(), "", calories = 25, operation = Operation.Avg),
-                CalorieComponent(2, "Капуста, морковь, свекла", BitmapDrawable(), "", isDefault = true, calories = 40, operation = Operation.Avg),
-                CalorieComponent(3, "Картофель", BitmapDrawable(), "", calories = 80, operation = Operation.Avg),
-                CalorieComponent(4, "Рыба", BitmapDrawable(), "", calories = 70, operation = Operation.Avg),
-                CalorieComponent(5, "Мясо", BitmapDrawable(), "", calories = 100, operation = Operation.Avg),
-                CalorieComponent(6, "Сыр, яйцо", BitmapDrawable(), "", calories = 50, operation = Operation.Avg),
-                CalorieComponent(7, "Фасоль", BitmapDrawable(), "", calories = 100, operation = Operation.Avg),
-                CalorieComponent(8, "Масло (ложка)", BitmapDrawable(), "", calories = 153, operation = Operation.Sum),
-                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 40, operation = Operation.Sum),
-                CalorieComponent(10, "Майонез/соус (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
-                QuantityComponent(11, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(12, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", false, false, false, 2.0)
         )
     }
 

@@ -8,13 +8,12 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.LinearLayout
+import com.buildforyourself.iqfit.calc.FoodCalculator
 import com.buildforyourself.iqfit.data.DataProviderFactory
-import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.util.floatingActionButton
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
-import java.util.*
 
 class FoodComponentsActivity() : AppCompatActivity() {
     val dataProvider = DataProviderFactory.instance.dataProvider
@@ -85,8 +84,8 @@ class FoodComponentsActivity() : AppCompatActivity() {
     fun addFoodAndExit(category: FoodCategory)
     {
         val components = category.components.filter { it.isSelected }
-
-        val food = Food(0, category, listOf(), Date(), 0, 0)
+        var calculator = FoodCalculator()
+        val food = calculator.calculateFood(category, components)
         dataProvider.saveFood(food)
         finish()
     }
