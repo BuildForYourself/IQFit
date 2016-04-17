@@ -8,6 +8,6 @@
     <string name="component_save_as_default">По умолчанию</string>
     <string name="food_category_title">Категории</string>
     <string name="food_components_title">Настройки</string>
-    <string name="title_activity_chart_tab">ChartTabActivity</string>
+    <string name="title_activity_chart_tab">История</string>
     <string name="section_format">section: %1$d</string>
 </resources>
