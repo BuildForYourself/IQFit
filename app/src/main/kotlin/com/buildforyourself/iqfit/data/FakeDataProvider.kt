@@ -73,11 +73,11 @@ class FakeDataProvider() : IDataProvider {
                 FoodCategory (2, "Салаты", getIcon(R.drawable.salad), 2, true, getSaladComponents()),
                 FoodCategory (3, "Сладости", getIcon(R.drawable.bakery), 3, true, getSweetComponents()),
                 FoodCategory (4, "Напитки", getIcon(R.drawable.drink), 4, true, getDrinksComponents()),
-                FoodCategory (5, "Фрукты", getIcon(R.drawable.fruit), 5, true, listOf<FoodComponent>()),
+                FoodCategory (5, "Фрукты", getIcon(R.drawable.apple), 5, true, listOf<FoodComponent>()),
                 FoodCategory (7, "Мясо", getIcon(R.drawable.meat), 7, true, listOf<FoodComponent>()),
                 FoodCategory (8, "Рыба", getIcon(R.drawable.fish), 8, true, listOf<FoodComponent>()),
                 FoodCategory (9, "Гарниры", getIcon(R.drawable.seconddish), 9, true, listOf<FoodComponent>()),
-                FoodCategory (10, "Снеки", getIcon(R.drawable.snack), 10, true, listOf<FoodComponent>()),
+                FoodCategory (10, "Снеки", getIcon(R.drawable.nut), 10, true, listOf<FoodComponent>()),
                 FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, listOf<FoodComponent>()),
                 FoodCategory (12, "Молочное", getIcon(R.drawable.milk), 12, true, listOf<FoodComponent>())
         )
@@ -110,12 +110,42 @@ class FakeDataProvider() : IDataProvider {
         )
     }
 
+    private fun getSaladComponents(): List<FoodComponent> {
+        return listOf(
+                CalorieComponent(1, "Огурцы, помидоры, зелень", BitmapDrawable(), "", calories = 25, operation = Operation.Avg),
+                CalorieComponent(2, "Капуста, морковь, свекла", BitmapDrawable(), "", isDefault = true, calories = 40, operation = Operation.Avg),
+                CalorieComponent(3, "Картофель", BitmapDrawable(), "", calories = 80, operation = Operation.Avg),
+                CalorieComponent(4, "Рыба", BitmapDrawable(), "", calories = 70, operation = Operation.Avg),
+                CalorieComponent(5, "Мясо", BitmapDrawable(), "", calories = 100, operation = Operation.Avg),
+                CalorieComponent(6, "Сыр, яйцо", BitmapDrawable(), "", calories = 50, operation = Operation.Avg),
+                CalorieComponent(7, "Фасоль", BitmapDrawable(), "", calories = 100, operation = Operation.Avg),
+                CalorieComponent(8, "Масло (ложка)", BitmapDrawable(), "", calories = 153, operation = Operation.Sum),
+                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 40, operation = Operation.Sum),
+                CalorieComponent(10, "Майонез/соус (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
+                QuantityComponent(11, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(12, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+        )
+    }
+
+    private fun getSweetComponents(): List<FoodComponent> {
+        return listOf(
+                CalorieComponent(1, "Плитка Шоколада", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
+                CalorieComponent(2, "Пастила, зефир, мармелад", BitmapDrawable(), "", calories = 65, operation = Operation.Sum),
+                CalorieComponent(3, "Карамель, леденцы", BitmapDrawable(), "", calories = 57, operation = Operation.Sum),
+                CalorieComponent(4, "Мороженое", BitmapDrawable(), "", calories = 168, operation = Operation.Sum),
+                CalorieComponent(5, "Печенье, крекер", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
+                CalorieComponent(6, "Шок. конфета", BitmapDrawable(), "", calories = 100, operation = Operation.Sum),
+                CalorieComponent(7, "Пирожное", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
+                QuantityComponent(8, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(9, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0),
+                QuantityComponent(9, "Тройная порция", BitmapDrawable(), "", multiplier = 3.0)
+        )
+    }
+
     private fun getDrinksComponents(): List<FoodComponent> {
-        val context = IQFitApplication.instance.applicationContext
-        var drawable = ContextCompat.getDrawable(context, R.drawable.fastfood);
 
         return listOf(
-                CalorieComponent(1, "Кофе", drawable, "", isDefault = true, calories = 10),
+                CalorieComponent(1, "Кофе", getIcon(R.drawable.drink), "", isDefault = true, calories = 10),
                 CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
                 CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15),
                 CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37),
