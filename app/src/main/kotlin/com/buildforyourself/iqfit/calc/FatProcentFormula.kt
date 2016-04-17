@@ -2,7 +2,7 @@ package com.buildforyourself.iqfit.calc
 
 class FatProcentFormula(
         override var weight: Double,
-        override var activityType: Formula.ActivityTypos,
+        override var activityType: Formula.ActivityTypes,
         var fatProcent: Double
 ) : Formula(weight, activityType) {
 
@@ -10,7 +10,7 @@ class FatProcentFormula(
         return countCalories(weight, activityType, fatProcent)
     }
 
-    fun countCalories(weight: Double, activityType: ActivityTypos, fatProcent: Double): Double {
+    fun countCalories(weight: Double, activityType: ActivityTypes, fatProcent: Double): Double {
         /**
          * LBM - lean body mass
          */
@@ -20,11 +20,11 @@ class FatProcentFormula(
          */
         var BMR = 370 + (21.6 * LBM)
         when (activityType) {
-            ActivityTypos.OFFICE_PLANKTON -> return BMR * 1.2
-            ActivityTypos.SPORTY -> return BMR * 1.4
-            ActivityTypos.MORE_SPORTY -> return BMR * 1.6
-            ActivityTypos.ATHLETE -> return BMR * 1.8
-            ActivityTypos.HULK -> return BMR * 2
+            ActivityTypes.OFFICE_PLANKTON -> return BMR * 1.2
+            ActivityTypes.SPORTY -> return BMR * 1.4
+            ActivityTypes.MORE_SPORTY -> return BMR * 1.6
+            ActivityTypes.ATHLETE -> return BMR * 1.8
+            ActivityTypes.HULK -> return BMR * 2
         }
     }
 }

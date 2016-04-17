@@ -4,6 +4,8 @@ import android.R
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.drawable.BitmapDrawable
+import com.buildforyourself.iqfit.IQFitApplication
+import com.buildforyourself.iqfit.calc.Formula
 import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.model.FoodComponent
@@ -16,11 +18,40 @@ import org.jetbrains.anko.db.*
 
 class DataProvider : IDataProvider {
     override fun saveUser(user: User) {
-
+        IQFitApplication.instance.applicationContext.database.use {
+            insert("User",
+                    "age" to user.age,
+                    "height" to user.height,
+                    "weight" to user.weight,
+                    "fatPercent" to user.fatPercent,
+                    "activityType" to user.activityType.typeId)
+        }
     }
 
-    override fun loadUser(): User {
-        throw UnsupportedOperationException()
+    override fun loadUser(): User? {
+        var result : User? = null
+        IQFitApplication.instance.applicationContext.database.use {
+            select("User", "age", "height", "weight", "fatPercent", "activityType").exec {
+                if(this.count>0) {
+                    this.moveToLast()
+                    var  activityType = Formula.ActivityTypes.OFFICE_PLANKTON
+                    when(this.getInt(4))
+                    {
+                        2 -> activityType = Formula.ActivityTypes.SPORTY
+                        3 -> activityType = Formula.ActivityTypes.MORE_SPORTY
+                        4 -> activityType = Formula.ActivityTypes.ATHLETE
+                        5 -> activityType = Formula.ActivityTypes.HULK
+                    }
+                    result = User(
+                            age = this.getInt(0),
+                            height = this.getInt(1),
+                            weight = this.getDouble(2),
+                            fatPercent = this.getDouble(3),
+                            activityType = activityType)
+                }
+            }
+        }
+        return result
     }
 
     override fun loadFood(): List<Food> {
@@ -68,7 +99,25 @@ class DatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "IQFit", n
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        // Here you create tables (more info about that is below)
+        /*
+        db.createTable("FoodCategory", true,
+                "id" to INTEGER + PRIMARY_KEY + UNIQUE + AUTOINCREMENT,
+                "name" to)
+        db.createTable("Food", true,
+                "id" to INTEGER + PRIMARY_KEY + UNIQUE + AUTOINCREMENT)
+
+        db.createTable("QuantityComponent", true,
+                "id" to INTEGER + PRIMARY_KEY + UNIQUE + AUTOINCREMENT)
+        db.createTable("CalorieComponent", true,
+                "id" to INTEGER + PRIMARY_KEY + UNIQUE + AUTOINCREMENT)
+                */
+        db.createTable("User", true,
+                "id" to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+                "age" to INTEGER,
+                "height" to INTEGER,
+                "weight" to REAL,
+                "fatPercent" to REAL,
+                "activityType" to INTEGER)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

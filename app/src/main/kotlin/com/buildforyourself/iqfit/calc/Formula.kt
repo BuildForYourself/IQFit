@@ -2,29 +2,29 @@ package com.buildforyourself.iqfit.calc
 
 abstract class Formula(
         open var weight: Double,
-        open var activityType: Formula.ActivityTypos
+        open var activityType: Formula.ActivityTypes
 ) {
-    enum class ActivityTypos {
+    enum class ActivityTypes(val typeId : Int) {
         /**
          * Usual healthy person with sitting way of life.
          */
-        OFFICE_PLANKTON,
+        OFFICE_PLANKTON(1),
         /**
          * Physical activity 3-5 times per week.
          */
-        SPORTY,
+        SPORTY(2),
         /**
          * Active everyday work, weight trainings (i.e. Athletes) less then 15 hours per week.
          */
-        MORE_SPORTY,
+        MORE_SPORTY(3),
         /**
          * Serious weight trainings 15-20 hours per week.
          */
-        ATHLETE,
+        ATHLETE(4),
         /**
          * Weight extreme trainings.
          */
-        HULK
+        HULK(5)
     }
 
     internal abstract fun calculate():Double

@@ -15,6 +15,6 @@ interface IDataProvider {
 
     fun saveDefaultComponents(foodCategory: FoodCategory)
 
-    fun loadUser() : User
+    fun loadUser() : User?
     fun saveUser(user : User)
 }

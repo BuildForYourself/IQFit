@@ -17,7 +17,7 @@ class FakeDataProvider : IDataProvider {
         throw UnsupportedOperationException()
     }
 
-    override fun loadUser(): User {
+    override fun loadUser(): User? {
         throw UnsupportedOperationException()
     }
 

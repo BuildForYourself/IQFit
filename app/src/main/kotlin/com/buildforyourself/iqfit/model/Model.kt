@@ -9,7 +9,7 @@ class User (
         val height : Int,
         val weight: Double,
         val fatPercent: Double,
-        var activityType: Formula.ActivityTypos) {
+        var activityType: Formula.ActivityTypes) {
 }
 
 class Food (
