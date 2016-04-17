@@ -101,7 +101,7 @@ class FakeDataProvider() : IDataProvider {
         return listOf()
     }
 
-    private fun getIcon(iconId: Int) : Drawable {
+    private fun getIcon(iconId: Int): Drawable {
         val context = IQFitApplication.instance.applicationContext
         var drawable = ContextCompat.getDrawable(context, iconId);
         return drawable;
@@ -160,13 +160,16 @@ class FakeDataProvider() : IDataProvider {
 
     private fun getSecondCourseComponents(): List<FoodComponent> {
         return listOf(
-                CalorieComponent(1, "Плитка Шоколада", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
-                CalorieComponent(2, "Пастила, зефир, мармелад", BitmapDrawable(), "", calories = 65, operation = Operation.Sum),
-                CalorieComponent(3, "Карамель, леденцы", BitmapDrawable(), "", calories = 57, operation = Operation.Sum),
-                CalorieComponent(4, "Мороженое", BitmapDrawable(), "", calories = 168, operation = Operation.Sum),
-                CalorieComponent(5, "Печенье, крекер", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
-                CalorieComponent(6, "Шок. конфета", BitmapDrawable(), "", calories = 100, operation = Operation.Sum),
-                CalorieComponent(7, "Пирожное", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
+                CalorieComponent(1, "Цветная капуста", BitmapDrawable(), "", calories = 80, operation = Operation.Avg),
+                CalorieComponent(2, "Фасоль стручковая", BitmapDrawable(), "", calories = 90, operation = Operation.Avg),
+                CalorieComponent(3, "Овощи", BitmapDrawable(), "", calories = 100, operation = Operation.Avg),
+                CalorieComponent(4, "Картофель", BitmapDrawable(), "", calories = 150, operation = Operation.Avg),
+                CalorieComponent(5, "Каша, Макароны, Пюре", BitmapDrawable(), "", isDefault = true, calories = 230, operation = Operation.Avg),
+                CalorieComponent(6, "Каша на молоке", BitmapDrawable(), "", calories = 330, operation = Operation.Avg),
+                CalorieComponent(7, "Блины", BitmapDrawable(), "", calories = 500, operation = Operation.Avg),
+                CalorieComponent(7, "Бобы", BitmapDrawable(), "", calories = 700, operation = Operation.Avg),
+                CalorieComponent(7, "Жареное", BitmapDrawable(), "", calories = 200, operation = Operation.Sum),
+                CalorieComponent(7, "Фри", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
                 QuantityComponent(8, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
                 QuantityComponent(9, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0),
                 QuantityComponent(9, "Тройная порция", BitmapDrawable(), "", multiplier = 3.0)
