@@ -155,8 +155,6 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             var generator = DbGenerator()
             generator.clear();
             generator.fill();
-        } else if (id == R.id.nav_gallery) {
-
         } else if (id == R.id.nav_charts) {
             startActivity<ChartTabActivity>()
         } else if (id == R.id.nav_manage) {

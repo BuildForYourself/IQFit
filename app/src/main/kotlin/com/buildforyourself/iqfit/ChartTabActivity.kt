@@ -119,13 +119,26 @@ class ChartTabActivity : AppCompatActivity() {
 //            val textView = rootView.findViewById(R.id.section_label) as TextView
 //            textView.text = getString(R.string.section_format, arguments.getInt(ARG_SECTION_NUMBER))
 
-            SetLineColumnChartData(rootView.findViewById(R.id.linecolumnchart) as ComboLineColumnChartView, arguments.getInt(ARG_SECTION_NUMBER))
-            SetPieChartData(rootView.findViewById(R.id.piechart) as PieChartView, arguments.getInt(ARG_SECTION_NUMBER))
+            val sectionNumber = arguments.getInt(ARG_SECTION_NUMBER)
+            val lineColumnChart = rootView.findViewById(R.id.linecolumnchart) as ComboLineColumnChartView;
+            val pieChart = rootView.findViewById(R.id.piechart) as PieChartView;
+
+            if (sectionNumber == 1){
+                pieChart.visibility = 1
+                lineColumnChart.visibility = -1
+
+                SetPieChartData(pieChart, sectionNumber)
+            } else{
+                lineColumnChart.visibility = 1
+                pieChart.visibility = -1
+
+                SetLineColumnChartData(lineColumnChart, sectionNumber)
+            }
 
             return rootView
         }
 
-        private fun SetPieChartData(chart: PieChartView, anInt: Int) {
+        private fun SetPieChartData(chart: PieChartView, sectionNumber: Int) {
 
             val numValues = 6
 
@@ -142,7 +155,7 @@ class ChartTabActivity : AppCompatActivity() {
             data.setHasCenterCircle(hasCenterCircle);
 
             if (isExploded) {
-                data.setSlicesSpacing(5);
+                data.setSlicesSpacing(4);
             }
 
             if (hasCenterText1) {
@@ -153,11 +166,11 @@ class ChartTabActivity : AppCompatActivity() {
                 data.setCenterText1Typeface(tf);
 
                 // Get font size from dimens.xml and convert it to sp(library uses sp values).
-                data.setCenterText1FontSize(20);
+                data.setCenterText1FontSize(30);
             }
 
             if (hasCenterText2) {
-                data.setCenterText2("Charts (Roboto Italic)");
+                //data.setCenterText2("День");
 
                 val tf = Typeface.createFromAsset(getActivity().getAssets(), "Roboto-Italic.ttf");
 
@@ -165,17 +178,16 @@ class ChartTabActivity : AppCompatActivity() {
                 data.setCenterText2FontSize(10);
             }
 
-            chart.setPieChartData(data);
-
+            chart.setPieChartData(data)
         }
 
-        private fun SetLineColumnChartData(chart: ComboLineColumnChartView, anInt: Int) {
+        private fun SetLineColumnChartData(chart: ComboLineColumnChartView, sectionNumber: Int) {
 
             var numCount = 0
 
-            if (anInt == 1) {
+            if (sectionNumber == 2) {
                 numCount = 31
-            } else if (anInt == 2) {
+            } else if (sectionNumber == 3) {
                 numCount = 12
             }
 
@@ -183,9 +195,9 @@ class ChartTabActivity : AppCompatActivity() {
 
             generateValues(numCount)
 
-            val data = ComboLineColumnChartData(generateColumnData(foods, anInt), generateLineData(numCount))
+            val data = ComboLineColumnChartData(generateColumnData(foods, sectionNumber), generateLineData(numCount))
 
-            setAxes(data, anInt)
+            setAxes(data, sectionNumber)
 
             chart.comboLineColumnChartData = data
         }
@@ -266,7 +278,7 @@ class ChartTabActivity : AppCompatActivity() {
             return ColumnChartData(columns)
         }
 
-        private fun setAxes(data: AbstractChartData, anInt: Int) {
+        private fun setAxes(data: AbstractChartData, sectionNumber: Int) {
             if (hasAxes) {
                 val axisX = Axis()
                 val axisY = Axis().setHasLines(true)
@@ -275,10 +287,10 @@ class ChartTabActivity : AppCompatActivity() {
                     var xName = ""
                     var yName = ""
 
-                    if (anInt == 1) {
+                    if (sectionNumber == 2) {
                         xName = "Дни"
                         yName = "%"
-                    } else if (anInt == 2) {
+                    } else if (sectionNumber == 3) {
                         xName = "Месяцы"
                         yName = "%"
                     }
@@ -329,14 +341,14 @@ class ChartTabActivity : AppCompatActivity() {
         }
 
         override fun getCount(): Int {
-            // Show 2 total pages.
-            return 2
+            // Show 3 total pages.
+            return 3
         }
 
         override fun getPageTitle(position: Int): CharSequence? {
             when (position) {
-                0 -> return "Месяц"
-                1 -> return "Год"
+                1 -> return "Месяц"
+                2 -> return "Год"
             }
             return null
         }
