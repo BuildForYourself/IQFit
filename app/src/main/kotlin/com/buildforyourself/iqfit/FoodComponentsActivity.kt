@@ -67,7 +67,7 @@ class FoodComponentsActivity() : AppCompatActivity() {
                     }
                 }
             }
-            floatingActionButton {  }.lparams {
+            floatingActionButton { }.lparams {
                 margin = dip(16)
                 gravity = Gravity.END or Gravity.BOTTOM
             }
