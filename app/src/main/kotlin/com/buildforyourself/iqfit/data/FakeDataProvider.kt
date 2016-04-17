@@ -221,7 +221,7 @@ class FakeDataProvider() : IDataProvider {
                 CalorieComponent(3, "Карамель, леденцы", BitmapDrawable(), "", calories = 57, operation = Operation.Sum),
                 CalorieComponent(4, "Мороженое", BitmapDrawable(), "", calories = 168, operation = Operation.Sum),
                 CalorieComponent(5, "Печенье, крекер", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
-                CalorieComponent(6, "Шок. конфета", BitmapDrawable(), "", calories = 100, operation = Operation.Sum),
+                CalorieComponent(6, "Шок. конфета", BitmapDrawable(), "", isDefault = true, calories = 100, operation = Operation.Sum),
                 CalorieComponent(7, "Пирожное", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
                 QuantityComponent(8, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
                 QuantityComponent(9, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0),
