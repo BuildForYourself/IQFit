@@ -93,6 +93,10 @@ class ChartTabActivity : AppCompatActivity() {
      */
     class PlaceholderFragment : Fragment() {
 
+        private val monthMode = 1;
+        private val yearMode = 2;
+        private val pieMode = 3;
+
         private val numberOfLines = 1
         private val maxNumberOfLines = 1
         private val numberOfPoints = 31
@@ -125,7 +129,7 @@ class ChartTabActivity : AppCompatActivity() {
             val foods = DataProviderFactory.instance.dataProvider.loadFood()
             //val foods = FakeDataProvider().loadFood()
 
-            if (sectionNumber == 1){
+            if (sectionNumber == pieMode){
                 pieChart.visibility = 1
                 lineColumnChart.visibility = -1
 
@@ -205,13 +209,13 @@ class ChartTabActivity : AppCompatActivity() {
 
             var numCount = 0
 
-            if (sectionNumber == 2) {
+            if (sectionNumber == 1) {
                 numCount = 31
-            } else if (sectionNumber == 3) {
+            } else if (sectionNumber == 2) {
                 numCount = 12
             }
 
-            generateValues(numCount)
+            generateValues(numCount, sectionNumber)
 
             val data = ComboLineColumnChartData(generateColumnData(foods, sectionNumber), generateLineData(numCount))
 
@@ -220,10 +224,16 @@ class ChartTabActivity : AppCompatActivity() {
             chart.comboLineColumnChartData = data
         }
 
-        private fun generateValues(numCount: Int) {
+        private fun generateValues(numCount: Int, sectionNumber: Int) {
+
+            var value = 100f;
+
+            if (sectionNumber == yearMode)
+                value = (value * 30).toFloat()
+
             for (i in 0..maxNumberOfLines - 1) {
                 for (j in 0..numCount - 1) {
-                    randomNumbersTab[i][j] = 100f
+                    randomNumbersTab[i][j] = value
                 }
             }
         }
@@ -258,7 +268,7 @@ class ChartTabActivity : AppCompatActivity() {
 
             var items = mutableListOf<Food>()
 
-            if (sectionNumber == 2) {
+            if (sectionNumber == monthMode) {
                 for(i in 0..foods.count() - 1){
 
                     val date= foods[i].dateTime
@@ -271,13 +281,9 @@ class ChartTabActivity : AppCompatActivity() {
                 }
 
                 numColumns = 31// items.count()
-            } else if (sectionNumber == 3) {
+            } else if (sectionNumber == yearMode) {
                 items.addAll(foods);
                 numColumns = 12
-            }
-
-            for(i in 0..foods.count()){
-
             }
 
             val columns = ArrayList<Column>()
@@ -287,7 +293,7 @@ class ChartTabActivity : AppCompatActivity() {
 
                 values = ArrayList<SubcolumnValue>()
 
-                    if (sectionNumber == 2) {
+                    if (sectionNumber == monthMode) {
                         var count = items.count()
                         if (count != 0) {
 
@@ -309,7 +315,7 @@ class ChartTabActivity : AppCompatActivity() {
 
                             values.add(SubcolumnValue(percent, ChartUtils.COLOR_GREEN))
                         }
-                    } else if (sectionNumber == 3) {
+                    } else if (sectionNumber == yearMode) {
                         val filtered = items.filter { it.dateTime.month == i };
                         val count = filtered.count()
                         if (count != 0)
@@ -336,10 +342,10 @@ class ChartTabActivity : AppCompatActivity() {
                     var xName = ""
                     var yName = ""
 
-                    if (sectionNumber == 2) {
+                    if (sectionNumber == monthMode) {
                         xName = "Дни"
                         yName = "%"
-                    } else if (sectionNumber == 3) {
+                    } else if (sectionNumber == yearMode) {
                         xName = "Месяцы"
                         yName = "%"
                     }
@@ -396,8 +402,8 @@ class ChartTabActivity : AppCompatActivity() {
 
         override fun getPageTitle(position: Int): CharSequence? {
             when (position) {
-                1 -> return "Месяц"
-                2 -> return "Год"
+                0 -> return "Месяц"
+                1 -> return "Год"
             }
             return null
         }
