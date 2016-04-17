@@ -172,11 +172,6 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         } else if (id == R.id.nav_charts) {
             startActivity<ChartTabActivity>()
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         val drawer = find<DrawerLayout>(R.id.drawer_layout)

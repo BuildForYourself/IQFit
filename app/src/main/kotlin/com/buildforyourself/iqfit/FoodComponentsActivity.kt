@@ -49,6 +49,8 @@ class FoodComponentsActivity() : AppCompatActivity() {
 
                                         val component = category.components[i]
                                         toggleButton() {
+                                            //height = dip(60)
+                                            setCompoundDrawablesWithIntrinsicBounds(null, component.icon, null, null)
                                             textOff = component.name
                                             textOn = component.name
                                             text = component.name
