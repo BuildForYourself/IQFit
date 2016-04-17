@@ -51,6 +51,7 @@ class FoodComponentsActivity() : AppCompatActivity() {
                                         text = component.name
                                         textSize = 14f
                                         isChecked = component.isDefault
+                                        component.isSelected = component.isDefault
                                         onClick {
                                             component.isSelected = !component.isSelected
                                             if (component.isSingle)

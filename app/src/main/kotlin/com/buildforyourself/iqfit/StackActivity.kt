@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.*
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import com.buildforyourself.iqfit.data.DataProviderFactory
@@ -97,6 +98,7 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
             vh.category_label.text = foods[position].foodCategory.name
             vh.percent_label.text = foods[position].percent.toString() + "%"
+            vh.imageView.setImageDrawable(foods[position].foodCategory.icon)
             //var t = Drawable.createFromPath("@color/design_fab_stroke_end_inner_color")
 
             //vh.icon = _foods[position].foodCategory.icon
@@ -108,11 +110,12 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         var category_label: TextView
         val percent_label: TextView
         val food: Food
-        //var icon: Drawable
+        var imageView: ImageView
         init {
             this.category_label = row?.findViewById(R.id.food_category_name) as TextView
             this.percent_label = row?.findViewById(R.id.percent) as TextView
             this.food = food
+            this.imageView = row?.findViewById(R.id.icon) as ImageView
 //            val context = IQFitApplication.instance.applicationContext
 //            var drawable = ContextCompat.getDrawable(context, R.drawable.icon1);
 //            this.icon = drawable
