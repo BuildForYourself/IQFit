@@ -1,5 +1,6 @@
 package com.buildforyourself.iqfit.data
 
+import android.R
 import android.graphics.drawable.BitmapDrawable
 import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
@@ -39,7 +40,7 @@ class DataProvider : IDataProvider {
 
     private fun getSoupComponents() : List<FoodComponent>{
         return listOf(
-                FoodComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true)
+                FoodComponent("Овощной", BitmapDrawable(), "", false, true, true)
         )
     }
 

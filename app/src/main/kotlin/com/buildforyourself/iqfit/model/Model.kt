@@ -32,40 +32,38 @@ class FoodCategory (
     }
 }
 
-open class FoodComponent (
-        val id : Int,
-        val name: String,
-        val icon: Drawable,
-        val group: String = "",
-        val isSingle: Boolean = false,
-        var isDefault: Boolean = false,
-        var isSelected: Boolean = false) {
-}
+//open class FoodComponent1 (
+//        val id : Int,
+//        val name: String,
+//        val icon: Drawable,
+//        val group: String = "",
+//        val isSingle: Boolean = false,
+//        var isDefault: Boolean = false,
+//        var isSelected: Boolean = false) {
+//}
 
-class CalorieComponent (
-        id : Int,
-        name: String,
-        icon: Drawable,
-        group: String,
-        isSingle: Boolean = false,
-        isDefault: Boolean = false,
-        isSelected: Boolean = false,
-        val calories: Int,
-        val operation: Operation = Operation.Sum)
-: FoodComponent(id, name, icon, group, isSingle, isDefault, isSelected) {
-}
+//class CalorieComponent (
+//        name: String,
+//        icon: Drawable,
+//        group: String,
+//        isSingle: Boolean = false,
+//        isDefault: Boolean = false,
+//        isSelected: Boolean = false,
+//        val calories: Int,
+//        val operation: Operation = Operation.Sum)
+//: FoodComponent(name, icon, group, isSingle, isDefault, isSelected) {
+//}
 
-class QuantityComponent (
-        id : Int,
-        name: String,
-        icon: Drawable,
-        group: String,
-        isSingle: Boolean = false,
-        isDefault: Boolean = false,
-        isSelected: Boolean = false,
-        val multiplier: Double)
-: FoodComponent(id, name, icon, group, isSingle, isDefault, isSelected) {
-}
+//class QuantityComponent (
+//        name: String,
+//        icon: Drawable,
+//        group: String,
+//        isSingle: Boolean = false,
+//        isDefault: Boolean = false,
+//        isSelected: Boolean = false,
+//        val multiplier: Double)
+//: FoodComponent(name, icon, group, isSingle, isDefault, isSelected) {
+//}
 
 enum class Operation {
     Sum,

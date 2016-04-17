@@ -76,35 +76,35 @@ class FakeDataProvider : IDataProvider {
 
     private fun getSoupComponents(): List<FoodComponent> {
         return listOf(
-                CalorieComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true, calories = 80),
-                CalorieComponent(2, "Картофель", BitmapDrawable(), "", calories = 20),
-                CalorieComponent(3, "Горох, фасоль", BitmapDrawable(), "", calories = 20),
-                CalorieComponent(4, "Крем, сыр", BitmapDrawable(), "", calories = 20),
-                CalorieComponent(5, "Макароны, клецки", BitmapDrawable(), "", calories = 40),
-                CalorieComponent(6, "Мясо, рыба", BitmapDrawable(), "", calories = 50),
-                CalorieComponent(7, "Жирный бульон", BitmapDrawable(), "", calories = 60),
-                CalorieComponent(8, "Зажарка, сало", BitmapDrawable(), "", calories = 100),
-                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 35),
-                CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85),
-                CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80),
-                CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120),
-                QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+//                CalorieComponent(1, "Овощной", BitmapDrawable(), "", isDefault = true, calories = 80),
+//                CalorieComponent(2, "Картофель", BitmapDrawable(), "", calories = 20),
+//                CalorieComponent(3, "Горох, фасоль", BitmapDrawable(), "", calories = 20),
+//                CalorieComponent(4, "Крем, сыр", BitmapDrawable(), "", calories = 20),
+//                CalorieComponent(5, "Макароны, клецки", BitmapDrawable(), "", calories = 40),
+//                CalorieComponent(6, "Мясо, рыба", BitmapDrawable(), "", calories = 50),
+//                CalorieComponent(7, "Жирный бульон", BitmapDrawable(), "", calories = 60),
+//                CalorieComponent(8, "Зажарка, сало", BitmapDrawable(), "", calories = 100),
+//                CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 35),
+//                CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85),
+//                CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80),
+//                CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120),
+//                QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent("Двойная порция", BitmapDrawable(), "", false, false, false, 2.0)
         )
     }
 
     private fun getDrinksComponents(): List<FoodComponent> {
         return listOf(
-                CalorieComponent(1, "Кофе", BitmapDrawable(), "", isDefault = true, calories = 10),
-                CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
-                CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15),
-                CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37),
-                CalorieComponent(5, "Фруктовый Сок", BitmapDrawable(), "", calories = 100),
-                CalorieComponent(6, "Овощной сок", BitmapDrawable(), "", calories = 40),
-                CalorieComponent(7, "Газировка", BitmapDrawable(), "", calories = 80),
-                CalorieComponent(8, "Пиво", BitmapDrawable(), "", calories = 215),
-                CalorieComponent(9, "Вино", BitmapDrawable(), "", calories = 113),
-                CalorieComponent(10, "Крепкий алкоголь", BitmapDrawable(), "", calories = 114)
+//                CalorieComponent(1, "Кофе", BitmapDrawable(), "", isDefault = true, calories = 10),
+//                CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
+//                CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15),
+//                CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37),
+//                CalorieComponent(5, "Фруктовый Сок", BitmapDrawable(), "", calories = 100),
+//                CalorieComponent(6, "Овощной сок", BitmapDrawable(), "", calories = 40),
+//                CalorieComponent(7, "Газировка", BitmapDrawable(), "", calories = 80),
+//                CalorieComponent(8, "Пиво", BitmapDrawable(), "", calories = 215),
+//                CalorieComponent(9, "Вино", BitmapDrawable(), "", calories = 113),
+                CalorieComponent("Крепкий алкоголь", BitmapDrawable(), "", false, false, false, 114, Operation.Sum)
         )
     }
 }
