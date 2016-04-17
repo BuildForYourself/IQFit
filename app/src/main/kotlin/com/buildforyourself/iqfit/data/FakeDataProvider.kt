@@ -73,16 +73,40 @@ class FakeDataProvider() : IDataProvider {
                 FoodCategory (2, "Салаты", getIcon(R.drawable.salad), 2, true, getSaladComponents()),
                 FoodCategory (3, "Сладости", getIcon(R.drawable.bakery), 3, true, getSweetComponents()),
                 FoodCategory (4, "Напитки", getIcon(R.drawable.drink), 4, true, getDrinksComponents()),
-                FoodCategory (5, "Фрукты", getIcon(R.drawable.apple), 5, true, listOf<FoodComponent>()),
-                FoodCategory (7, "Мясо", getIcon(R.drawable.meat), 7, true, listOf<FoodComponent>()),
-                FoodCategory (8, "Рыба", getIcon(R.drawable.fish), 8, true, listOf<FoodComponent>()),
-                FoodCategory (9, "Гарниры", getIcon(R.drawable.seconddish), 9, true, listOf<FoodComponent>()),
-                FoodCategory (10, "Снеки", getIcon(R.drawable.nut), 10, true, listOf<FoodComponent>()),
-                FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, listOf<FoodComponent>()),
-                FoodCategory (12, "Молочное", getIcon(R.drawable.milk), 12, true, listOf<FoodComponent>())
+                FoodCategory (5, "Фрукты", getIcon(R.drawable.apple), 5, true, getFruitComponents()),
+                FoodCategory (7, "Мясо", getIcon(R.drawable.meat), 7, true, getMeatComponents()),
+                FoodCategory (8, "Рыба", getIcon(R.drawable.fish), 8, true, getFishComponents()),
+                FoodCategory (9, "Гарниры", getIcon(R.drawable.seconddish), 9, true, getSecondCourseComponents()),
+                FoodCategory (10, "Снеки", getIcon(R.drawable.nut), 10, true, getSnackComponents()),
+                FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, getFatFoodComponents()),
+                FoodCategory (12, "Молочное", getIcon(R.drawable.milk), 12, true, getMilkComponents())
         )
 
         return foodCategories;
+    }
+
+    private fun getFatFoodComponents(): List<FoodComponent> {
+        return listOf()
+    }
+
+    private fun getMilkComponents(): List<FoodComponent> {
+        return listOf()
+    }
+
+    private fun getSnackComponents(): List<FoodComponent> {
+        return listOf()
+    }
+
+    private fun getFishComponents(): List<FoodComponent> {
+        return listOf()
+    }
+
+    private fun getMeatComponents(): List<FoodComponent> {
+        return listOf()
+    }
+
+    private fun getFruitComponents(): List<FoodComponent> {
+        return listOf()
     }
 
     private fun getIcon(iconId: Int) : Drawable {
@@ -142,8 +166,22 @@ class FakeDataProvider() : IDataProvider {
         )
     }
 
-    private fun getDrinksComponents(): List<FoodComponent> {
+    private fun getSecondCourseComponents(): List<FoodComponent> {
+        return listOf(
+                CalorieComponent(1, "Плитка Шоколада", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
+                CalorieComponent(2, "Пастила, зефир, мармелад", BitmapDrawable(), "", calories = 65, operation = Operation.Sum),
+                CalorieComponent(3, "Карамель, леденцы", BitmapDrawable(), "", calories = 57, operation = Operation.Sum),
+                CalorieComponent(4, "Мороженое", BitmapDrawable(), "", calories = 168, operation = Operation.Sum),
+                CalorieComponent(5, "Печенье, крекер", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
+                CalorieComponent(6, "Шок. конфета", BitmapDrawable(), "", calories = 100, operation = Operation.Sum),
+                CalorieComponent(7, "Пирожное", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
+                QuantityComponent(8, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(9, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0),
+                QuantityComponent(9, "Тройная порция", BitmapDrawable(), "", multiplier = 3.0)
+        )
+    }
 
+    private fun getDrinksComponents(): List<FoodComponent> {
         return listOf(
                 CalorieComponent(1, "Кофе", getIcon(R.drawable.drink), "", isDefault = true, calories = 10),
                 CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
