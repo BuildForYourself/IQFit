@@ -37,6 +37,8 @@ class FoodCategoriesActivity() : AppCompatActivity() {
                                 val category = categories[i]
                                 button() {
                                     setCompoundDrawablesWithIntrinsicBounds(null, category.icon, null, null)
+                                    //setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.fastfood, 0, 0)
+
                                     text = category.name
                                     textSize = 14f
                                     onClick {
