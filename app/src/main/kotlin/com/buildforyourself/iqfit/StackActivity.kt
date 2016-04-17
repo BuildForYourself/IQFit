@@ -17,10 +17,8 @@ import android.widget.TextView
 import com.buildforyourself.iqfit.data.DataProviderFactory
 import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.util.DbGenerator
-import org.jetbrains.anko.find
-import org.jetbrains.anko.onItemClick
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
+import java.util.*
 
 class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -50,7 +48,20 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     override fun onResume() {
         val lv = findViewById(R.id.list_view) as ListView
 
-        lv.adapter = ListExampleAdapter(this)
+        val foods = DataProviderFactory.instance.dataProvider.loadFood().sortedByDescending { f -> f.dateTime }
+
+        val toolBar = findViewById(R.id.toolbar) as Toolbar
+
+        if(toolBar!=null)
+        {
+            val d = Date().date
+            var percent = 100 - foods.filter { f -> f.dateTime.date.equals(d) }.sumBy { f -> f.percent }
+            if(percent<0)
+                percent = 0
+            supportActionBar?.title = "Осталось $percent% "
+        }
+
+        lv.adapter = ListExampleAdapter(this, foods)
 
         lv.onItemClick { adapterView, view, i, l ->
             val lea = lv.adapter as ListExampleAdapter
@@ -61,11 +72,12 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         super.onResume()
     }
 
-    private class ListExampleAdapter(context: Context) : BaseAdapter() {
-        val foods: List<Food> = DataProviderFactory.instance.dataProvider.loadFood().sortedByDescending { f -> f.dateTime }
+    private class ListExampleAdapter(context: Context, foodsIn: List<Food>) : BaseAdapter() {
+        val foods: List<Food>
         private val mInflator: LayoutInflater
 
         init {
+            foods = foodsIn
             this.mInflator = LayoutInflater.from(context)
         }
 
