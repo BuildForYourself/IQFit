@@ -71,16 +71,16 @@ class FakeDataProvider() : IDataProvider {
 
     private fun getFastFoodComponents(): List<FoodComponent> {
         return listOf(
-                CalorieComponent(1, "Чизбургер", BitmapDrawable(), "", calories = 304, operation = Operation.Sum),
+                CalorieComponent(1, "Чизбургер", getIcon(R.drawable.hamburger), "", calories = 304, operation = Operation.Sum),
                 CalorieComponent(2, "Биг Тейсти", BitmapDrawable(), "", isDefault = true, calories = 842, operation = Operation.Sum),
                 CalorieComponent(3, "Филе-о-фиш", BitmapDrawable(), "", calories = 333, operation = Operation.Sum),
                 CalorieComponent(5, "Биф ролл", BitmapDrawable(), "", calories = 555, operation = Operation.Sum),
                 CalorieComponent(6, "Картофель фри", BitmapDrawable(), "", calories = 239, operation = Operation.Sum),
                 CalorieComponent(6, "Картофель по деревенски", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
-                CalorieComponent(6, "Шаверма", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
-                QuantityComponent(7, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                CalorieComponent(6, "Шаверма", getIcon(R.drawable.shaverma), "", calories = 108, operation = Operation.Sum),
+                QuantityComponent(7, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
                 QuantityComponent(7, "Средняя порции", BitmapDrawable(), "", multiplier = 1.4),
-                QuantityComponent(8, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                QuantityComponent(8, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 
@@ -88,15 +88,15 @@ class FakeDataProvider() : IDataProvider {
         return listOf(
                 CalorieComponent(1, "Плавленый сыр", BitmapDrawable(), "", calories = 65, operation = Operation.Avg),
                 CalorieComponent(2, "Нежирный сыр", BitmapDrawable(), "", isDefault = true, calories = 75, operation = Operation.Avg),
-                CalorieComponent(3, "Сыр", BitmapDrawable(), "", calories = 144, operation = Operation.Avg),
+                CalorieComponent(3, "Сыр", getIcon(R.drawable.cheese), "", calories = 144, operation = Operation.Avg),
                 CalorieComponent(4, "Творог нежирный", BitmapDrawable(), "", calories = 101, operation = Operation.Avg),
                 CalorieComponent(5, "Творог полужирный", BitmapDrawable(), "", calories = 101, operation = Operation.Avg),
                 CalorieComponent(6, "Творог жирный", BitmapDrawable(), "", calories = 108, operation = Operation.Avg),
                 CalorieComponent(6, "Сырок творожный", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
                 CalorieComponent(4, "Сахар/мёд/варенье", BitmapDrawable(), "", calories = 37, operation = Operation.Sum),
                 CalorieComponent(6, "Сметана (ложка)", BitmapDrawable(), "", calories = 35, operation = Operation.Sum),
-                QuantityComponent(7, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(8, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                QuantityComponent(7, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(8, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 
@@ -126,8 +126,8 @@ class FakeDataProvider() : IDataProvider {
                 CalorieComponent(7, "Майонез (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
                 CalorieComponent(8, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
                 CalorieComponent(9, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120, operation = Operation.Sum),
-                QuantityComponent(10, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(11, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                QuantityComponent(10, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(11, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 
@@ -146,21 +146,21 @@ class FakeDataProvider() : IDataProvider {
                 CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
                 CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
                 CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120, operation = Operation.Sum),
-                QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                QuantityComponent(13, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(14, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 
     private fun getFruitComponents(): List<FoodComponent> {
         return listOf(
-                CalorieComponent(1, "Цитрусовые", BitmapDrawable(), "", calories = 65, operation = Operation.Sum),
-                CalorieComponent(2, "Яблоко", BitmapDrawable(), "", isDefault = true, calories = 75, operation = Operation.Sum),
-                CalorieComponent(3, "Банан", BitmapDrawable(), "", calories = 144, operation = Operation.Sum),
-                CalorieComponent(4, "Виноград", BitmapDrawable(), "", calories = 101, operation = Operation.Sum),
+                CalorieComponent(1, "Цитрусовые", getIcon(R.drawable.citrus), "", calories = 65, operation = Operation.Sum),
+                CalorieComponent(2, "Яблоко", getIcon(R.drawable.apple), "", isDefault = true, calories = 75, operation = Operation.Sum),
+                CalorieComponent(3, "Банан", getIcon(R.drawable.banana), "", calories = 144, operation = Operation.Sum),
+                CalorieComponent(4, "Виноград", getIcon(R.drawable.grape), "", calories = 101, operation = Operation.Sum),
                 CalorieComponent(5, "Хурма", BitmapDrawable(), "", calories = 101, operation = Operation.Sum),
-                CalorieComponent(6, "Гранат", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
-                QuantityComponent(7, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(8, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                CalorieComponent(6, "Гранат", getIcon(R.drawable.granade), "", calories = 108, operation = Operation.Sum),
+                QuantityComponent(7, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(8, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 
@@ -184,8 +184,8 @@ class FakeDataProvider() : IDataProvider {
                 CalorieComponent(10, "Майонез (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
                 CalorieComponent(11, "Хлеб черный (кусок)", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
                 CalorieComponent(12, "Хлеб белый (кусок)", BitmapDrawable(), "", calories = 120, operation = Operation.Sum),
-                QuantityComponent(13, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(14, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                QuantityComponent(13, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(14, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 
@@ -201,8 +201,8 @@ class FakeDataProvider() : IDataProvider {
                 CalorieComponent(8, "Масло (ложка)", BitmapDrawable(), "", calories = 153, operation = Operation.Sum),
                 CalorieComponent(9, "Сметана (ложка)", BitmapDrawable(), "", calories = 40, operation = Operation.Sum),
                 CalorieComponent(10, "Майонез/соус (ложка)", BitmapDrawable(), "", calories = 85, operation = Operation.Sum),
-                QuantityComponent(11, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(12, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+                QuantityComponent(11, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(12, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 
@@ -215,8 +215,8 @@ class FakeDataProvider() : IDataProvider {
                 CalorieComponent(5, "Печенье, крекер", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
                 CalorieComponent(6, "Шок. конфета", BitmapDrawable(), "", isDefault = true, calories = 100, operation = Operation.Sum),
                 CalorieComponent(7, "Пирожное", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
-                QuantityComponent(8, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(9, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0),
+                QuantityComponent(8, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(9, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0),
                 QuantityComponent(9, "Тройная порция", BitmapDrawable(), "", multiplier = 3.0)
         )
     }
@@ -233,8 +233,8 @@ class FakeDataProvider() : IDataProvider {
                 CalorieComponent(7, "Бобы", BitmapDrawable(), "", calories = 700, operation = Operation.Avg),
                 CalorieComponent(7, "Жареное", BitmapDrawable(), "", calories = 200, operation = Operation.Sum),
                 CalorieComponent(7, "Фри", BitmapDrawable(), "", calories = 500, operation = Operation.Sum),
-                QuantityComponent(8, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
-                QuantityComponent(9, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0),
+                QuantityComponent(8, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(9, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0),
                 QuantityComponent(9, "Тройная порция", BitmapDrawable(), "", multiplier = 3.0)
         )
     }
@@ -242,16 +242,18 @@ class FakeDataProvider() : IDataProvider {
     private fun getDrinksComponents(): List<FoodComponent> {
 
         return listOf(
-                CalorieComponent(1, "Кофе", getIcon(R.drawable.drink), "", isDefault = true, calories = 10, operation = Operation.Sum),
+                CalorieComponent(1, "Кофе", BitmapDrawable(),  "", isDefault = true, calories = 10, operation = Operation.Sum),
                 CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6, operation = Operation.Sum),
                 CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15, operation = Operation.Sum),
                 CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37, operation = Operation.Sum),
                 CalorieComponent(5, "Фруктовый Сок", BitmapDrawable(), "", calories = 100, operation = Operation.Sum),
                 CalorieComponent(6, "Овощной сок", BitmapDrawable(), "", calories = 40, operation = Operation.Sum),
-                CalorieComponent(7, "Газировка", BitmapDrawable(), "", calories = 80, operation = Operation.Sum),
-                CalorieComponent(8, "Пиво", BitmapDrawable(), "", calories = 215, operation = Operation.Sum),
-                CalorieComponent(9, "Вино", BitmapDrawable(), "", calories = 113, operation = Operation.Sum),
-                CalorieComponent(10, "Крепкий алкоголь", BitmapDrawable(), "", calories = 114, operation = Operation.Sum)
+                CalorieComponent(7, "Газировка", getIcon(R.drawable.soda), "", calories = 80, operation = Operation.Sum),
+                CalorieComponent(8, "Пиво", getIcon(R.drawable.beer), "", calories = 215, operation = Operation.Sum),
+                CalorieComponent(9, "Вино", getIcon(R.drawable.wine), "", calories = 113, operation = Operation.Sum),
+                CalorieComponent(10, "Крепкий алкоголь", BitmapDrawable(), "", calories = 114, operation = Operation.Sum),
+                QuantityComponent(11, "Половина порции", getIcon(R.drawable.half), "", multiplier = 0.5),
+                QuantityComponent(12, "Двойная порция", getIcon(R.drawable.double), "", multiplier = 2.0)
         )
     }
 }
