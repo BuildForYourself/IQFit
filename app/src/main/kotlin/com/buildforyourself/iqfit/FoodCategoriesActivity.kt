@@ -45,7 +45,7 @@ class FoodCategoriesActivity() : AppCompatActivity() {
                                         if (category.components.count() > 0)
                                             startActivity<FoodComponentsActivity>("categoryId" to category.id)
                                     }
-                                    setOnLongClickListener {
+                                    onLongClick {
                                         val defaultComponents = category.getDefaultComponents()
                                         var calculator = FoodCalculator()
                                         var food = calculator.calculateFood(category, defaultComponents)

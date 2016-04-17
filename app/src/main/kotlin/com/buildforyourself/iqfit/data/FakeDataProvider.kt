@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import com.buildforyourself.iqfit.IQFitApplication
 import com.buildforyourself.iqfit.R
+import com.buildforyourself.iqfit.calc.Formula
 import com.buildforyourself.iqfit.model.*
 import java.util.*
 
@@ -14,6 +15,7 @@ class FakeDataProvider() : IDataProvider {
     }
 
     private val foods = mutableListOf<Food>()
+    private val user = User(30, 185, 86.0, 20.0, Formula.ActivityTypes.SPORTY)
 
     override fun saveDefaultComponents(foodCategory: FoodCategory) {
         throw UnsupportedOperationException()
@@ -24,7 +26,7 @@ class FakeDataProvider() : IDataProvider {
     }
 
     override fun loadUser(): User? {
-        throw UnsupportedOperationException()
+        return user
     }
 
     override fun saveUser(user: User) {

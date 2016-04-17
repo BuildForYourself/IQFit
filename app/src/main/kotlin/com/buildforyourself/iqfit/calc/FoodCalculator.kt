@@ -6,15 +6,8 @@ import java.util.*
 
 class FoodCalculator()
 {
-    fun calculateFood(category: FoodCategory, components: List<FoodComponent>): Food
+    fun calculateFood(category: FoodCategory, foodComponents: List<FoodComponent>): Food
     {
-        var foodComponents = mutableListOf<FoodComponent>()
-        for (foodComponent in components)
-        {
-            if (foodComponent.isSelected)
-                foodComponents.add(foodComponent)
-        }
-
         var groups = mutableListOf<String>()
 
         for (foodComponent in foodComponents)
@@ -54,7 +47,13 @@ class FoodCalculator()
                     }
                 }
             }
-            result += (((avgSum / avgCount) + calories) * groupMultiplier).toInt()
+            if(groupMultiplier - 0.001 < 0)
+                groupMultiplier=1.0
+
+            if (avgSum == 0 || avgCount == 0)
+                result += (calories * groupMultiplier).toInt()
+            else
+                result += (((avgSum / avgCount) + calories) * groupMultiplier).toInt()
         }
 
         val dataProvider = DataProviderFactory.instance.dataProvider
@@ -65,6 +64,6 @@ class FoodCalculator()
 
         var percent = ((result.toDouble() / caloriesNorm.toDouble()) * 100.0).toInt()
 
-        return Food(0, category, listOf(), Date(), result, percent)
+        return Food(0, category, foodComponents, Date(), result, percent)
     }
 }
