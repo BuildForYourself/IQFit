@@ -6,7 +6,6 @@ import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.model.FoodComponent
 import com.buildforyourself.iqfit.model.User
-import com.raizlabs.android.dbflow.sql.language.Select
 
 /**
  * Created by Ilya on 16.04.2016.
@@ -14,12 +13,11 @@ import com.raizlabs.android.dbflow.sql.language.Select
 
 class DataProvider : IDataProvider {
     override fun saveUser(user: User) {
-        user.save();
+
     }
 
     override fun loadUser(): User {
-        var user = Select().from<User>(User::class.java).querySingle()
-        return user
+        throw UnsupportedOperationException()
     }
 
     override fun loadFood(): List<Food> {
@@ -40,7 +38,7 @@ class DataProvider : IDataProvider {
 
     private fun getSoupComponents() : List<FoodComponent>{
         return listOf(
-                FoodComponent("Овощной", BitmapDrawable(), "", false, true, true)
+                FoodComponent(0, "Овощной", BitmapDrawable(), "", false, true, true)
         )
     }
 

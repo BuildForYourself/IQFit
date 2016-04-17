@@ -2,7 +2,6 @@ package com.buildforyourself.iqfit
 
 import android.app.*
 import android.content.Context
-import com.raizlabs.android.dbflow.config.FlowManager
 import kotlin.properties.Delegates
 
 /**
@@ -20,6 +19,5 @@ class IQFitApplication : Application {
 
     override fun onCreate() {
         super.onCreate()
-        FlowManager.init(this)
     }
 }
