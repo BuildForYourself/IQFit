@@ -75,6 +75,7 @@ class FoodComponentsActivity() : AppCompatActivity() {
                     background = ColorDrawable(Color.parseColor("#14ae21"))
                     setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_menu_send))
                     setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#14ae21")))
+                    imageTintList = ColorStateList.valueOf(-1)
                     onClick {
                         addFoodAndExit(category)
                     }
