@@ -20,6 +20,7 @@ import android.view.ViewGroup
 
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.buildforyourself.iqfit.data.DataProviderFactory
 
 import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.model.Food
@@ -27,13 +28,12 @@ import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.model.FoodComponent
 import lecho.lib.hellocharts.model.*
 
-import java.util.ArrayList
-
 import lecho.lib.hellocharts.util.ChartUtils
 import lecho.lib.hellocharts.view.ColumnChartView
 import lecho.lib.hellocharts.view.ComboLineColumnChartView
 import lecho.lib.hellocharts.view.LineChartView
 import lecho.lib.hellocharts.view.PieChartView
+import java.util.*
 
 class ChartTabActivity : AppCompatActivity() {
 
@@ -104,14 +104,14 @@ class ChartTabActivity : AppCompatActivity() {
         private val hasPoints = false
         private val hasLines = true
         private val isCubic = false
-        private val hasLabels = false
+        private val hasLabels = true
 
         private val hasLabelsOutside = false
         private val hasCenterCircle = true
         private val hasCenterText1 = true
         private val hasCenterText2 = true
         private val isExploded = true
-        private val hasLabelForSelected = true
+        private val hasLabelForSelected = false
 
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
@@ -122,30 +122,50 @@ class ChartTabActivity : AppCompatActivity() {
             val sectionNumber = arguments.getInt(ARG_SECTION_NUMBER)
             val lineColumnChart = rootView.findViewById(R.id.linecolumnchart) as ComboLineColumnChartView;
             val pieChart = rootView.findViewById(R.id.piechart) as PieChartView;
+            val foods = DataProviderFactory.instance.dataProvider.loadFood()
+            //val foods = FakeDataProvider().loadFood()
 
             if (sectionNumber == 1){
                 pieChart.visibility = 1
                 lineColumnChart.visibility = -1
 
-                SetPieChartData(pieChart, sectionNumber)
+                SetPieChartData(pieChart, sectionNumber, foods)
             } else{
                 lineColumnChart.visibility = 1
                 pieChart.visibility = -1
 
-                SetLineColumnChartData(lineColumnChart, sectionNumber)
+                SetLineColumnChartData(lineColumnChart, sectionNumber, foods)
             }
 
             return rootView
         }
 
-        private fun SetPieChartData(chart: PieChartView, sectionNumber: Int) {
-
-            val numValues = 6
+        private fun SetPieChartData(chart: PieChartView, sectionNumber: Int, foods: List<Food>) {
 
             val values = mutableListOf<SliceValue>()
-            for (i in 0..numValues) {
-                val sliceValue = SliceValue((Math.random() * 30 + 15).toFloat(), ChartUtils.pickColor());
-                values.add(sliceValue);
+//            for (i in 0..numValues) {
+//                val sliceValue = SliceValue((Math.random() * 30 + 15).toFloat(), ChartUtils.pickColor());
+//                values.add(sliceValue);
+//            }
+
+            val items = foods
+            val legendItems = mutableListOf<LegendItem>()
+
+            var categories = mutableListOf<FoodCategory>()
+            for(i in 0..items.count() - 1){
+                if (categories.find { it.name == items[i].foodCategory.name } == null)
+                    categories.add(items[i].foodCategory)
+            }
+
+            for(i in 0..categories.count() - 1){
+                var value = items.filter { it.foodCategory.name == categories[i].name }.sumBy { it.percent }.toFloat()
+
+                val color = ChartUtils.pickColor()
+                val legendItem = LegendItem(categories[i].name, value, color)
+                legendItems.add(legendItem)
+
+                val sliceValue = SliceValue(value, color)
+                values.add(sliceValue)
             }
 
             val data = PieChartData(values);
@@ -166,22 +186,22 @@ class ChartTabActivity : AppCompatActivity() {
                 data.setCenterText1Typeface(tf);
 
                 // Get font size from dimens.xml and convert it to sp(library uses sp values).
-                data.setCenterText1FontSize(30);
+                data.setCenterText1FontSize(20);
             }
 
             if (hasCenterText2) {
-                //data.setCenterText2("День");
+                data.setCenterText2("Категории");
 
                 val tf = Typeface.createFromAsset(getActivity().getAssets(), "Roboto-Italic.ttf");
 
                 data.setCenterText2Typeface(tf);
-                data.setCenterText2FontSize(10);
+                data.setCenterText2FontSize(14);
             }
 
             chart.setPieChartData(data)
         }
 
-        private fun SetLineColumnChartData(chart: ComboLineColumnChartView, sectionNumber: Int) {
+        private fun SetLineColumnChartData(chart: ComboLineColumnChartView, sectionNumber: Int, foods: List<Food>) {
 
             var numCount = 0
 
@@ -190,8 +210,6 @@ class ChartTabActivity : AppCompatActivity() {
             } else if (sectionNumber == 3) {
                 numCount = 12
             }
-
-            val foods = FakeDataProvider().loadFood()
 
             generateValues(numCount)
 
@@ -234,19 +252,32 @@ class ChartTabActivity : AppCompatActivity() {
             return lineChartData
         }
 
-        private fun generateColumnData(foods: List<Food>, anInt: Int): ColumnChartData {
-            val numSubcolumns = 1
+        private fun generateColumnData(foods: List<Food>, sectionNumber: Int): ColumnChartData {
+
             var numColumns = 0
 
             var items = mutableListOf<Food>()
 
-            if (anInt == 1) {
-                items = foods.filter { it.dateTime.month == 4}.toMutableList()
-                numColumns = items.count()
+            if (sectionNumber == 2) {
+                for(i in 0..foods.count() - 1){
 
-            } else {
+                    val date= foods[i].dateTime
+                    val cal = Calendar.getInstance();
+                    cal.setTime(date);
+                    val month = cal.get(Calendar.MONTH);
+
+                    if (month == 3) // January = 0
+                        items.add(foods[i])
+                }
+
+                numColumns = 31// items.count()
+            } else if (sectionNumber == 3) {
                 items.addAll(foods);
                 numColumns = 12
+            }
+
+            for(i in 0..foods.count()){
+
             }
 
             val columns = ArrayList<Column>()
@@ -256,20 +287,38 @@ class ChartTabActivity : AppCompatActivity() {
 
                 values = ArrayList<SubcolumnValue>()
 
-                    if (anInt == 1) {
-                        var count = items.count();
-                        if (count != 0)
-                            values.add(SubcolumnValue((items.sumBy { it.calories }/count).toFloat(), ChartUtils.COLOR_GREEN));
-                    } else {
+                    if (sectionNumber == 2) {
+                        var count = items.count()
+                        if (count != 0) {
+
+                            var filtered = mutableListOf<Food>()
+
+                            for(j in 0..count-1){
+                                val item = items[j];
+
+                                val date= foods[j].dateTime
+                                val cal = Calendar.getInstance();
+                                cal.setTime(date);
+                                val day = cal.get(Calendar.DAY_OF_MONTH);
+
+                                if (day == i)
+                                    filtered.add(item)
+                            }
+
+                            var percent = filtered.sumBy { it.percent }.toFloat()
+
+                            values.add(SubcolumnValue(percent, ChartUtils.COLOR_GREEN))
+                        }
+                    } else if (sectionNumber == 3) {
                         val filtered = items.filter { it.dateTime.month == i };
                         val count = filtered.count()
                         if (count != 0)
-                            values.add(SubcolumnValue((filtered.sumBy { it.calories }/count).toFloat(), ChartUtils.COLOR_GREEN));
+                            values.add(SubcolumnValue((filtered.sumBy { it.percent }).toFloat(), ChartUtils.COLOR_GREEN));
                     }
 
                 val column = Column(values)
 
-                column.setHasLabels(true)
+                column.setHasLabels(hasLabels)
                 column.setHasLabelsOnlyForSelected(true)
 
                 columns.add(column)
@@ -352,5 +401,8 @@ class ChartTabActivity : AppCompatActivity() {
             }
             return null
         }
+    }
+
+    class LegendItem(val name: String, val float: Float, val color: Int){
     }
 }
