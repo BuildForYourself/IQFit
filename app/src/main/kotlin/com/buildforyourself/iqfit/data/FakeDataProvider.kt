@@ -8,10 +8,12 @@ import com.buildforyourself.iqfit.R
 import com.buildforyourself.iqfit.model.*
 import java.util.*
 
-class FakeDataProvider : IDataProvider {
+class FakeDataProvider() : IDataProvider {
     override fun saveFood(food: Food) {
-        //throw UnsupportedOperationException()
+        foods.add(food)
     }
+
+    private val foods = mutableListOf<Food>()
 
     override fun saveDefaultComponents(foodCategory: FoodCategory) {
         throw UnsupportedOperationException()
@@ -31,6 +33,7 @@ class FakeDataProvider : IDataProvider {
 
     override fun loadFood(): List<Food> {
 
+        /*
         val foodCategories = loadFoodCategories();
 
         var food = listOf (
@@ -49,8 +52,9 @@ class FakeDataProvider : IDataProvider {
                 Food (13, foodCategories[5], listOf(), Date(), 10, 13),
                 Food (14, foodCategories[6], listOf(), Date(), 10, 14)
         )
+        */
 
-        return food;
+        return foods;
     }
 
     override fun loadFoodCategories(): List<FoodCategory> {

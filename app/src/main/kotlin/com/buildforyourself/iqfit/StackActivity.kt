@@ -15,6 +15,7 @@ import android.view.*
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
+import com.buildforyourself.iqfit.data.DataProviderFactory
 import com.buildforyourself.iqfit.data.FakeDataProvider
 import com.buildforyourself.iqfit.model.Food
 import com.buildforyourself.iqfit.util.DbGenerator
@@ -51,7 +52,7 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     override fun onResume() {
         val lv = findViewById(R.id.list_view) as ListView
 
-        lv.adapter = ListExampleAdapter(this, FakeDataProvider().loadFood())
+        lv.adapter = ListExampleAdapter(this)
 
         lv.onItemClick { adapterView, view, i, l ->
             val lea = lv.adapter as ListExampleAdapter
@@ -62,23 +63,20 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         super.onResume()
     }
 
-    private class ListExampleAdapter(context: Context, foods: List<Food>) : BaseAdapter() {
-        var _foods: List<Food>
+    private class ListExampleAdapter(context: Context) : BaseAdapter() {
+        val foods: List<Food> = DataProviderFactory.instance.dataProvider.loadFood()
         private val mInflator: LayoutInflater
 
         init {
-            _foods = foods;
-            _foods = foods.sortedByDescending { r -> r.id } //Debug for fake provider
-            //foods = foods.sortedByDescending { r -> r.dateTime }
             this.mInflator = LayoutInflater.from(context)
         }
 
         override fun getCount(): Int {
-            return _foods.size
+            return foods.size
         }
 
         override fun getItem(position: Int): Any {
-            return _foods[position]
+            return foods[position]
         }
 
         override fun getItemId(position: Int): Long {
@@ -90,15 +88,15 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             val vh: ListRowHolder
             if (convertView == null) {
                 view = this.mInflator.inflate(R.layout.food_layout, parent, false)
-                vh = ListRowHolder(view, _foods[position])
+                vh = ListRowHolder(view, foods[position])
                 view.tag = vh
             } else {
                 view = convertView
                 vh = view.tag as ListRowHolder
             }
 
-            vh.category_label.text = _foods[position].foodCategory.name
-            vh.percent_label.text = _foods[position].percent.toString() + "%"
+            vh.category_label.text = foods[position].foodCategory.name
+            vh.percent_label.text = foods[position].percent.toString() + "%"
             //var t = Drawable.createFromPath("@color/design_fab_stroke_end_inner_color")
 
             //vh.icon = _foods[position].foodCategory.icon

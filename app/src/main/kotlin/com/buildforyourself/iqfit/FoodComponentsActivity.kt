@@ -70,7 +70,6 @@ class FoodComponentsActivity() : AppCompatActivity() {
             }
             floatingActionButton {
                 background = ColorDrawable(Color.parseColor("#14ae21"))
-                elevation = dip(6).toFloat()
                 onClick {
                     addFoodAndExit(category)
                 }
@@ -85,6 +84,7 @@ class FoodComponentsActivity() : AppCompatActivity() {
 
     fun addFoodAndExit(category: FoodCategory)
     {
+        val components = category.components.filter { it.isSelected }
 
         val food = Food(0, category, listOf(), Date(), 0, 0)
         dataProvider.saveFood(food)

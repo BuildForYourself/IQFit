@@ -28,6 +28,8 @@ class DataProvider : IDataProvider {
         }
     }
 
+    private val foods = mutableListOf<Food>()
+
     override fun loadUser(): User? {
         var result : User? = null
         IQFitApplication.instance.applicationContext.database.use {
