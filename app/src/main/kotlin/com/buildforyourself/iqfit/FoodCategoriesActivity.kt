@@ -1,13 +1,11 @@
 package com.buildforyourself.iqfit
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
 import com.buildforyourself.iqfit.calc.FoodCalculator
 import com.buildforyourself.iqfit.data.DataProviderFactory
 import org.jetbrains.anko.*
-import org.jetbrains.anko.appcompat.v7.toolbar
 
 class FoodCategoriesActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +16,7 @@ class FoodCategoriesActivity() : AppCompatActivity() {
         val categories = dataProvider.loadFoodCategories()
 
         verticalLayout() {
-            toolbar() {
-                backgroundColor = Color.parseColor(getString(R.color.colorPrimary))
-                title = getString(R.string.food_category_title)
-            }
+            setTheme(R.style.AppTheme)
 
             scrollView() {
                 verticalLayout() {

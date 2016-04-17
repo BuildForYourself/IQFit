@@ -20,10 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".FoodCategoriesActivity"
-            android:label="Food Categories"
+            android:label="Категории"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".FoodComponentsActivity"
-            android:label="Food Components"
+            android:label="Компоненты"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ChartTabActivity"

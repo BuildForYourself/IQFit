@@ -13,7 +13,6 @@ import com.buildforyourself.iqfit.data.DataProviderFactory
 import com.buildforyourself.iqfit.model.FoodCategory
 import com.buildforyourself.iqfit.util.floatingActionButton
 import org.jetbrains.anko.*
-import org.jetbrains.anko.appcompat.v7.toolbar
 
 class FoodComponentsActivity() : AppCompatActivity() {
     val dataProvider = DataProviderFactory.instance.dataProvider
@@ -27,59 +26,62 @@ class FoodComponentsActivity() : AppCompatActivity() {
 
         currentCategory = category
 
-        frameLayout {
-            verticalLayout {
-                setSupportActionBar(toolbar() {
-                    backgroundColor = Color.parseColor(getString(R.color.colorPrimary))
-                    title = getString(R.string.food_components_title)
-                })
-                scrollView {
-                    verticalLayout() {
-                        var i: Int = 0
-                        while (i < category.components.count()) {
-                            linearLayout() {
-                                orientation = LinearLayout.HORIZONTAL
-                                weightSum = 2f
-                                for (j in 0..1) {
-                                    if (i == category.components.count())
-                                        break
 
-                                    val component = category.components[i]
-                                    toggleButton() {
-                                        textOff = component.name
-                                        textOn = component.name
-                                        text = component.name
-                                        textSize = 14f
-                                        isChecked = component.isDefault
-                                        component.isSelected = component.isDefault
-                                        onClick {
-                                            component.isSelected = !component.isSelected
-                                            if (component.isSingle)
-                                                category.selectSingleComponent(component)
+            frameLayout {
+                setTheme(R.style.AppTheme)
+                verticalLayout {
+                    //setSupportActionBar(toolbar() {
+                    //    backgroundColor = Color.parseColor(getString(R.color.colorPrimary))
+                    //    title = getString(R.string.food_components_title)
+                    //})
+                    scrollView {
+                        verticalLayout() {
+                            var i: Int = 0
+                            while (i < category.components.count()) {
+                                linearLayout() {
+                                    orientation = LinearLayout.HORIZONTAL
+                                    weightSum = 2f
+                                    for (j in 0..1) {
+                                        if (i == category.components.count())
+                                            break
+
+                                        val component = category.components[i]
+                                        toggleButton() {
+                                            textOff = component.name
+                                            textOn = component.name
+                                            text = component.name
+                                            textSize = 14f
+                                            isChecked = component.isDefault
+                                            component.isSelected = component.isDefault
+                                            onClick {
+                                                component.isSelected = !component.isSelected
+                                                if (component.isSingle)
+                                                    category.selectSingleComponent(component)
+                                            }
+                                        }.lparams {
+                                            weight = 1f
+                                            width = 0
                                         }
-                                    }.lparams {
-                                        weight = 1f
-                                        width = 0
+                                        i++
                                     }
-                                    i++
                                 }
                             }
                         }
                     }
                 }
-            }
-            floatingActionButton {
-                background = ColorDrawable(Color.parseColor("#14ae21"))
-                onClick {
-                    addFoodAndExit(category)
+                floatingActionButton {
+                    background = ColorDrawable(Color.parseColor("#14ae21"))
+                    onClick {
+                        addFoodAndExit(category)
+                    }
+
+                }.lparams {
+                    margin = dip(16)
+
+                    gravity = Gravity.END or Gravity.BOTTOM
                 }
-
-            }.lparams {
-                margin = dip(16)
-
-                gravity = Gravity.END or Gravity.BOTTOM
             }
-        }
+
     }
 
     fun addFoodAndExit(category: FoodCategory)
