@@ -1,6 +1,7 @@
 package com.buildforyourself.iqfit.data
 
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import com.buildforyourself.iqfit.IQFitApplication
 import com.buildforyourself.iqfit.R
@@ -64,21 +65,26 @@ class FakeDataProvider : IDataProvider {
         var drawable2 = ContextCompat.getDrawable(context, R.drawable.salad);
 
         var foodCategories = listOf (
-                FoodCategory (1, "Супы", drawable1, 1, true, getSoupComponents()),
-                FoodCategory (2, "Салаты", drawable2, 2, true, getDrinksComponents()),
-                FoodCategory (3, "Сладости", BitmapDrawable(), 3, true, listOf<FoodComponent>()),
-                FoodCategory (4, "Напитки", BitmapDrawable(), 4, true, listOf<FoodComponent>()),
-                FoodCategory (5, "Фрукты", BitmapDrawable(), 5, true, listOf<FoodComponent>()),
-                FoodCategory (6, "Овощи", BitmapDrawable(), 6, true, listOf<FoodComponent>()),
-                FoodCategory (7, "Мясо", BitmapDrawable(), 7, true, listOf<FoodComponent>()),
-                FoodCategory (8, "Рыба", BitmapDrawable(), 8, true, listOf<FoodComponent>()),
-                FoodCategory (9, "Гарниры", BitmapDrawable(), 9, true, listOf<FoodComponent>()),
-                FoodCategory (10, "Снеки", BitmapDrawable(), 10, true, listOf<FoodComponent>()),
-                FoodCategory (11, "Фастфуд", BitmapDrawable(), 11, true, listOf<FoodComponent>()),
-                FoodCategory (12, "Молочное", BitmapDrawable(), 12, true, listOf<FoodComponent>())
+                FoodCategory (1, "Супы", getIcon(R.drawable.soup), 1, true, getSoupComponents()),
+                FoodCategory (2, "Салаты", getIcon(R.drawable.salad), 2, true, getDrinksComponents()),
+                FoodCategory (3, "Сладости", getIcon(R.drawable.bakery), 3, true, listOf<FoodComponent>()),
+                FoodCategory (4, "Напитки", getIcon(R.drawable.drink), 4, true, listOf<FoodComponent>()),
+                FoodCategory (5, "Фрукты", getIcon(R.drawable.fruit), 5, true, listOf<FoodComponent>()),
+                FoodCategory (7, "Мясо", getIcon(R.drawable.meat), 7, true, listOf<FoodComponent>()),
+                FoodCategory (8, "Рыба", getIcon(R.drawable.fish), 8, true, listOf<FoodComponent>()),
+                FoodCategory (9, "Гарниры", getIcon(R.drawable.seconddish), 9, true, listOf<FoodComponent>()),
+                FoodCategory (10, "Снеки", getIcon(R.drawable.snack), 10, true, listOf<FoodComponent>()),
+                FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, listOf<FoodComponent>()),
+                FoodCategory (12, "Молочное", getIcon(R.drawable.milk), 12, true, listOf<FoodComponent>())
         )
 
         return foodCategories;
+    }
+
+    private fun getIcon(iconId: Int) : Drawable {
+        val context = IQFitApplication.instance.applicationContext
+        var drawable = ContextCompat.getDrawable(context, iconId);
+        return drawable;
     }
 
     private fun getSoupComponents(): List<FoodComponent> {
