@@ -1,6 +1,9 @@
 package com.buildforyourself.iqfit.data
 
 import android.graphics.drawable.BitmapDrawable
+import android.support.v4.content.ContextCompat
+import com.buildforyourself.iqfit.IQFitApplication
+import com.buildforyourself.iqfit.R
 import com.buildforyourself.iqfit.model.*
 import java.util.*
 
@@ -56,9 +59,13 @@ class FakeDataProvider : IDataProvider {
         //            foodCategories.add(foodCategory);
         //        }
 
+        val context = IQFitApplication.instance.applicationContext
+        var drawable1 = ContextCompat.getDrawable(context, R.drawable.fastfood);
+        var drawable2 = ContextCompat.getDrawable(context, R.drawable.salad);
+
         var foodCategories = listOf (
-                FoodCategory (1, "Супы", BitmapDrawable(), 1, true, getSoupComponents()),
-                FoodCategory (2, "Салаты", BitmapDrawable(), 2, true, getDrinksComponents()),
+                FoodCategory (1, "Супы", drawable1, 1, true, getSoupComponents()),
+                FoodCategory (2, "Салаты", drawable2, 2, true, getDrinksComponents()),
                 FoodCategory (3, "Сладости", BitmapDrawable(), 3, true, listOf<FoodComponent>()),
                 FoodCategory (4, "Напитки", BitmapDrawable(), 4, true, listOf<FoodComponent>()),
                 FoodCategory (5, "Фрукты", BitmapDrawable(), 5, true, listOf<FoodComponent>()),
@@ -94,8 +101,11 @@ class FakeDataProvider : IDataProvider {
     }
 
     private fun getDrinksComponents(): List<FoodComponent> {
+        val context = IQFitApplication.instance.applicationContext
+        var drawable = ContextCompat.getDrawable(context, R.drawable.fastfood);
+
         return listOf(
-                CalorieComponent(1, "Кофе", BitmapDrawable(), "", isDefault = true, calories = 10),
+                CalorieComponent(1, "Кофе", drawable, "", isDefault = true, calories = 10),
                 CalorieComponent(2, "Чай", BitmapDrawable(), "", calories = 6),
                 CalorieComponent(3, "Молоко/сливки", BitmapDrawable(), "", isDefault = true, calories = 15),
                 CalorieComponent(4, "Сахар/мёд", BitmapDrawable(), "", calories = 37),

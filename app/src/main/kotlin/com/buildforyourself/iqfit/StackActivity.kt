@@ -1,9 +1,11 @@
 package com.buildforyourself.iqfit
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -99,7 +101,7 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             vh.percent_label.text = _foods[position].percent.toString() + "%"
             //var t = Drawable.createFromPath("@color/design_fab_stroke_end_inner_color")
 
-            //vh.icon.drawable = sList[position].foodCategory.icon
+            //vh.icon = _foods[position].foodCategory.icon
             return view
         }
     }
@@ -108,12 +110,14 @@ class StackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         var category_label: TextView
         val percent_label: TextView
         val food: Food
-        //val icon: ImageView
+        //var icon: Drawable
         init {
             this.category_label = row?.findViewById(R.id.food_category_name) as TextView
             this.percent_label = row?.findViewById(R.id.percent) as TextView
             this.food = food
-            //this.icon = row?.findViewById(R.id.icon) as ImageView
+//            val context = IQFitApplication.instance.applicationContext
+//            var drawable = ContextCompat.getDrawable(context, R.drawable.icon1);
+//            this.icon = drawable
         }
     }
 
