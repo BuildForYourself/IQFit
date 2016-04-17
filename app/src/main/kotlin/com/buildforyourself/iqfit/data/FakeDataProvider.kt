@@ -70,14 +70,14 @@ class FakeDataProvider() : IDataProvider {
                 FoodCategory (8, "Рыба", getIcon(R.drawable.fish), 8, true, getFishComponents()),
                 FoodCategory (9, "Гарнир", getIcon(R.drawable.seconddish), 9, true, getSecondCourseComponents()),
                 FoodCategory (10, "Снек", getIcon(R.drawable.nut), 10, true, getSnackComponents()),
-                FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, getFatFoodComponents()),
+                FoodCategory (11, "Фастфуд", getIcon(R.drawable.fastfood), 11, true, getFastFoodComponents()),
                 FoodCategory (12, "Молочный продукт", getIcon(R.drawable.milk), 12, true, getMilkComponents())
         )
 
         return foodCategories;
     }
 
-    private fun getFatFoodComponents(): List<FoodComponent> {
+    private fun getFastFoodComponents(): List<FoodComponent> {
         return listOf()
     }
 
@@ -98,7 +98,16 @@ class FakeDataProvider() : IDataProvider {
     }
 
     private fun getFruitComponents(): List<FoodComponent> {
-        return listOf()
+        return listOf(
+                CalorieComponent(1, "Цитрусовые", BitmapDrawable(), "", calories = 65, operation = Operation.Sum),
+                CalorieComponent(2, "Яблоко", BitmapDrawable(), "", isDefault = true, calories = 75, operation = Operation.Sum),
+                CalorieComponent(3, "Банан", BitmapDrawable(), "", calories = 144, operation = Operation.Sum),
+                CalorieComponent(4, "Виноград", BitmapDrawable(), "", calories = 101, operation = Operation.Sum),
+                CalorieComponent(5, "Хурма", BitmapDrawable(), "", calories = 101, operation = Operation.Sum),
+                CalorieComponent(6, "Гранат", BitmapDrawable(), "", calories = 108, operation = Operation.Sum),
+                QuantityComponent(7, "Половина порции", BitmapDrawable(), "", multiplier = 0.5),
+                QuantityComponent(8, "Двойная порция", BitmapDrawable(), "", multiplier = 2.0)
+        )
     }
 
     private fun getIcon(iconId: Int): Drawable {
